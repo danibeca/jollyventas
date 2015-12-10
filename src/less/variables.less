@@ -1,0 +1,25 @@
+@bgDefault: #00558C;
+@gradColor1 : #2BC0E4;
+@gradColor2 : #EAECC6;
+
+.navbar-app {
+	background: @bgDefault;
+}
+
+.app {
+	.gradient(linear; @gradColor1, @gradColor2);
+}
+
+.has-navbar-top .app-body {
+	padding-top: 0;
+}
+
+.section {
+	.gradient(linear; @gradColor1, @gradColor2);
+	padding: 100px 15px;
+	height: 100%;
+}
+
+.page-header {
+    border-bottom: none; 
+}

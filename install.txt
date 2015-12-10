@@ -1,0 +1,5 @@
+npm install
+bower update
+###Execute###
+gulp build
+phonegap run android
