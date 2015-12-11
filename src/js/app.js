@@ -4,19 +4,42 @@ angular.module('JollyVentasApp', [
   'mobile-angular-ui',
   'JollyVentasApp.controllers.Main',
   'JollyVentasApp.controllers.Login',
+  'JollyVentasApp.controllers.Tienda',
+  'JollyVentasApp.controllers.Compra',
+  'JollyVentasApp.controllers.Venta',
   'JollyVentasApp.services.Login',
 ])
 
 .config(['$routeProvider', function ($routeProvider) {
   $routeProvider
+        .when('/', {
+            controller: 'MainController',
+            templateUrl: 'home.html'
+        })
         .when('/login', {
             controller: 'LoginController',
             templateUrl: 'login.html'
         })
-        .when('/', {
-            controller: 'MainController',
-            templateUrl: 'home.html'
-        })  
+        .when('/tienda-seleccionar', {
+            controller: 'TiendaSeleccionarController',
+            templateUrl: 'tienda-seleccionar.html'
+        })
+        .when('/tienda-abrir', {
+            controller: 'TiendaAbrirController',
+            templateUrl: 'tienda-abrir.html'
+        })
+        .when('/tienda-cerrar', {
+            controller: 'TiendaCerrarController',
+            templateUrl: 'tienda-cerrar.html'
+        })
+        .when('/venta', {
+            controller: 'VentaController',
+            templateUrl: 'venta.html'
+        })
+        .when('/solicitud', {
+            controller: 'CompraSolicitudController',
+            templateUrl: 'solicitud.html'
+        })
         .otherwise({ redirectTo: '/login' });
 }])
 .run(['$rootScope', '$location', '$cookieStore', '$http',

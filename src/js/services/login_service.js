@@ -11,7 +11,7 @@ angular.module('JollyVentasApp.services.Login', [])
             $timeout(function(){
                 var response = { success: username === 'test' && password === 'test' };
                 if(!response.success) {
-                    response.message = 'Username or password is incorrect';
+                    response.message = 'Usuario o contraseña incorrecto';
                 }
                 callback(response);
             }, 1000);

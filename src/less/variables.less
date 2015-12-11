@@ -1,6 +1,13 @@
 @bgDefault: #00558C;
 @gradColor1 : #2BC0E4;
 @gradColor2 : #EAECC6;
+@textColor : #00558C;
+
+ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
 
 .navbar-app {
 	background: @bgDefault;
@@ -16,10 +23,52 @@
 
 .section {
 	.gradient(linear; @gradColor1, @gradColor2);
-	padding: 100px 15px;
+	padding: 60px 15px;
 	height: 100%;
+	color: @textColor;
+	overflow: auto;
 }
 
 .page-header {
     border-bottom: none; 
+    font-size: 24px;
+}
+
+.contenedor-centro {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.contenedor-blanco {
+	background-color: #ffffff;
+	border-radius: 10px;
+	padding: 10px 20px 10px 20px;
+	box-shadow: 3px 2px 4px #999;
+	margin-bottom: 20px;
+
+	.encabezado {
+		font-size: 26px;
+	}
+}
+
+.float-right{
+	float: right;
+
+	img {
+		width:100px;
+		margin-top: -10px;
+	}
+}
+
+.activo:hover {
+	cursor: pointer;
+	box-shadow: none;
+}
+
+.input-short {
+	width: 200px;
+}
+
+.venta-articulo {
+	padding: 25px;
 }

@@ -1,0 +1,17 @@
+<section class="section container-fluid" ng-controller="TiendaSeleccionarController">
+<h1 class="page-header">Selecciona un punto de venta</h1>
+
+	<div class="contenedor-centro">
+	  <ul>
+	        <li class="contenedor-blanco activo" ng-repeat="tienda in tiendas" ng-click="seleccionar()"> 
+	        	<span class="encabezado">
+	        		{{ tienda }} 
+	        	</span>
+	        	<span class="float-right">
+	        		<img src="img/logo.png" class="img-responsive center-block" />
+	        	</span>
+	        </li>
+	  </ul>  
+	</div>
+
+</section>
