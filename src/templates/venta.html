@@ -1,145 +1,227 @@
 <section class="section container-fluid">
 
+	<br>
 	<div class="row">
 		<div class="col-xs-4 venta-articulo">
-			<img src="img/imagen100.png" class="img-responsive center-block" />
-			<div style="text-align:center;" style="margin: 0 auto;">
-				<table align="center">
-					<tr>
-						<td colspan="3" class="venta-articulo-medida">9 Onzas</td>
-					</tr>
-					<tr>
-						<td><button class="btn btn-default" type="button" ng-click="articulo_agregar();">+</button></td>
-						<td><span class="venta-articulo-cantidad">{{ cantidad }}</span></td>
-						<td><button class="btn btn-default" type="button" ng-click="articulo_remover();">-</button></td>
-					</tr>
-					<tr>
-						<td colspan="3" class="venta-articulo-medida">12 Onzas</td>
-					</tr>
-					<tr>
-						<td><button class="btn btn-default" type="button">+</button></td>
-						<td><span class="venta-articulo-cantidad">0</span></td>
-						<td><button class="btn btn-default" type="button">-</button></td>
-					</tr>
-				</table>
+			<div class="row">
+				<div class="col-xs-6">
+					<img src="img/articulo-1.png" class="img-responsive center-block" />
+				</div>
+				<div class="col-xs-6">
+					<div class="row">
+						<div class="col-xs-4">
+							<img src="img/agregar.png" class="img-responsive center-block" ng-click="articulo_agregar();"/>
+							11 Oz
+						</div>
+						<div class="col-xs-1">
+							<span class="venta-articulo-cantidad">{{ cantidad }}</span>
+						</div>
+						<div class="col-xs-4">
+							<button class="btn btn-default" type="button" ng-click="articulo_remover();">-</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4">
+							<img src="img/agregar.png" class="img-responsive center-block" ng-click="articulo_agregar();"/>
+							16 Oz
+						</div>
+						<div class="col-xs-1">
+							<span class="venta-articulo-cantidad">{{ cantidad }}</span>
+						</div>
+						<div class="col-xs-4">
+							<button class="btn btn-default" type="button" ng-click="articulo_remover();">-</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+
 		<div class="col-xs-4 venta-articulo">
-			<img src="img/imagen100.png" class="img-responsive center-block" />
-			<div style="text-align:center;" style="margin: 0 auto;">
-				<table align="center">
-					<tr>
-						<td colspan="3" class="venta-articulo-medida">9 Onzas</td>
-					</tr>
-					<tr>
-						<td><button class="btn btn-default" type="button">+</button></td>
-						<td><span class="venta-articulo-cantidad">0</span></td>
-						<td><button class="btn btn-default" type="button">-</button></td>
-					</tr>
-					<tr>
-						<td colspan="3" class="venta-articulo-medida">12 Onzas</td>
-					</tr>
-					<tr>
-						<td><button class="btn btn-default" type="button">+</button></td>
-						<td><span class="venta-articulo-cantidad">0</span></td>
-						<td><button class="btn btn-default" type="button">-</button></td>
-					</tr>
-				</table>
+			<div class="row">
+				<div class="col-xs-6">
+					<img src="img/articulo-2.png" class="img-responsive center-block" />
+				</div>
+				<div class="col-xs-6">
+					<div class="row">
+						<div class="col-xs-4">
+							<img src="img/agregar.png" class="img-responsive center-block" ng-click="articulo_agregar();"/>
+							11 Oz
+						</div>
+						<div class="col-xs-1">
+							<span class="venta-articulo-cantidad">{{ cantidad }}</span>
+						</div>
+						<div class="col-xs-4">
+							<button class="btn btn-default" type="button" ng-click="articulo_remover();">-</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4">
+							<img src="img/agregar.png" class="img-responsive center-block" ng-click="articulo_agregar();"/>
+							16 Oz
+						</div>
+						<div class="col-xs-1">
+							<span class="venta-articulo-cantidad">{{ cantidad }}</span>
+						</div>
+						<div class="col-xs-4">
+							<button class="btn btn-default" type="button" ng-click="articulo_remover();">-</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+
 		<div class="col-xs-4 venta-articulo">
-			<img src="img/imagen100.png" class="img-responsive center-block" />
-			<div style="text-align:center;" style="margin: 0 auto;">
-				<table align="center">
-					<tr>
-						<td colspan="3" class="venta-articulo-medida">9 Onzas</td>
-					</tr>
-					<tr>
-						<td><button class="btn btn-default" type="button">+</button></td>
-						<td><span class="venta-articulo-cantidad">0</span></td>
-						<td><button class="btn btn-default" type="button">-</button></td>
-					</tr>
-					<tr>
-						<td colspan="3" class="venta-articulo-medida">12 Onzas</td>
-					</tr>
-					<tr>
-						<td><button class="btn btn-default" type="button">+</button></td>
-						<td><span class="venta-articulo-cantidad">0</span></td>
-						<td><button class="btn btn-default" type="button">-</button></td>
-					</tr>
-				</table>
+			<div class="row">
+				<div class="col-xs-6">
+					<img src="img/articulo-1.png" class="img-responsive center-block" />
+				</div>
+				<div class="col-xs-6">
+					<div class="row">
+						<div class="col-xs-4">
+							<img src="img/agregar.png" class="img-responsive center-block" ng-click="articulo_agregar();"/>
+							11 Oz
+						</div>
+						<div class="col-xs-1">
+							<span class="venta-articulo-cantidad">{{ cantidad }}</span>
+						</div>
+						<div class="col-xs-4">
+							<button class="btn btn-default" type="button" ng-click="articulo_remover();">-</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4">
+							<img src="img/agregar.png" class="img-responsive center-block" ng-click="articulo_agregar();"/>
+							16 Oz
+						</div>
+						<div class="col-xs-1">
+							<span class="venta-articulo-cantidad">{{ cantidad }}</span>
+						</div>
+						<div class="col-xs-4">
+							<button class="btn btn-default" type="button" ng-click="articulo_remover();">-</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+
+	<br><br>
+
 	<div class="row">
 		<div class="col-xs-4 venta-articulo">
-			<img src="img/imagen100.png" class="img-responsive center-block" />
-			<div style="text-align:center;" style="margin: 0 auto;">
-				<table align="center">
-					<tr>
-						<td colspan="3" class="venta-articulo-medida">9 Onzas</td>
-					</tr>
-					<tr>
-						<td><button class="btn btn-default" type="button">+</button></td>
-						<td><span class="venta-articulo-cantidad">0</span></td>
-						<td><button class="btn btn-default" type="button">-</button></td>
-					</tr>
-					<tr>
-						<td colspan="3" class="venta-articulo-medida">12 Onzas</td>
-					</tr>
-					<tr>
-						<td><button class="btn btn-default" type="button">+</button></td>
-						<td><span class="venta-articulo-cantidad">0</span></td>
-						<td><button class="btn btn-default" type="button">-</button></td>
-					</tr>
-				</table>
+			<div class="row">
+				<div class="col-xs-6">
+					<img src="img/articulo-2.png" class="img-responsive center-block" />
+				</div>
+				<div class="col-xs-6">
+					<div class="row">
+						<div class="col-xs-4">
+							<img src="img/agregar.png" class="img-responsive center-block" ng-click="articulo_agregar();"/>
+							11 Oz
+						</div>
+						<div class="col-xs-1">
+							<span class="venta-articulo-cantidad">{{ cantidad }}</span>
+						</div>
+						<div class="col-xs-4">
+							<button class="btn btn-default" type="button" ng-click="articulo_remover();">-</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4">
+							<img src="img/agregar.png" class="img-responsive center-block" ng-click="articulo_agregar();"/>
+							16 Oz
+						</div>
+						<div class="col-xs-1">
+							<span class="venta-articulo-cantidad">{{ cantidad }}</span>
+						</div>
+						<div class="col-xs-4">
+							<button class="btn btn-default" type="button" ng-click="articulo_remover();">-</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+
 		<div class="col-xs-4 venta-articulo">
-			<img src="img/imagen100.png" class="img-responsive center-block" />
-			<div style="text-align:center;" style="margin: 0 auto;">
-				<table align="center">
-					<tr>
-						<td colspan="3" class="venta-articulo-medida">9 Onzas</td>
-					</tr>
-					<tr>
-						<td><button class="btn btn-default" type="button">+</button></td>
-						<td><span class="venta-articulo-cantidad">0</span></td>
-						<td><button class="btn btn-default" type="button">-</button></td>
-					</tr>
-					<tr>
-						<td colspan="3" class="venta-articulo-medida">12 Onzas</td>
-					</tr>
-					<tr>
-						<td><button class="btn btn-default" type="button">+</button></td>
-						<td><span class="venta-articulo-cantidad">0</span></td>
-						<td><button class="btn btn-default" type="button">-</button></td>
-					</tr>
-				</table>
+			<div class="row">
+				<div class="col-xs-6">
+					<img src="img/articulo-1.png" class="img-responsive center-block" />
+				</div>
+				<div class="col-xs-6">
+					<div class="row">
+						<div class="col-xs-4">
+							<img src="img/agregar.png" class="img-responsive center-block" ng-click="articulo_agregar();"/>
+							11 Oz
+						</div>
+						<div class="col-xs-1">
+							<span class="venta-articulo-cantidad">{{ cantidad }}</span>
+						</div>
+						<div class="col-xs-4">
+							<button class="btn btn-default" type="button" ng-click="articulo_remover();">-</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4">
+							<img src="img/agregar.png" class="img-responsive center-block" ng-click="articulo_agregar();"/>
+							16 Oz
+						</div>
+						<div class="col-xs-1">
+							<span class="venta-articulo-cantidad">{{ cantidad }}</span>
+						</div>
+						<div class="col-xs-4">
+							<button class="btn btn-default" type="button" ng-click="articulo_remover();">-</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
+
 		<div class="col-xs-4 venta-articulo">
-			<img src="img/imagen100.png" class="img-responsive center-block" />
-			<div style="text-align:center;" style="margin: 0 auto;">
-				<table align="center">
-					<tr>
-						<td colspan="3" class="venta-articulo-medida">9 Onzas</td>
-					</tr>
-					<tr>
-						<td><button class="btn btn-default" type="button">+</button></td>
-						<td><span class="venta-articulo-cantidad">0</span></td>
-						<td><button class="btn btn-default" type="button">-</button></td>
-					</tr>
-					<tr>
-						<td colspan="3" class="venta-articulo-medida">12 Onzas</td>
-					</tr>
-					<tr>
-						<td><button class="btn btn-default" type="button">+</button></td>
-						<td><span class="venta-articulo-cantidad">0</span></td>
-						<td><button class="btn btn-default" type="button">-</button></td>
-					</tr>
-				</table>
+			<div class="row">
+				<div class="col-xs-6">
+					<img src="img/articulo-2.png" class="img-responsive center-block" />
+				</div>
+				<div class="col-xs-6 ">
+					<div class="row">
+						<div class="col-xs-4">
+							<img src="img/agregar.png" class="img-responsive center-block" ng-click="articulo_agregar();"/>
+							11 Oz
+						</div>
+						<div class="col-xs-1">
+							<span class="venta-articulo-cantidad">{{ cantidad }}</span>
+						</div>
+						<div class="col-xs-4">
+							<button class="btn btn-default" type="button" ng-click="articulo_remover();">-</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-4">
+							<img src="img/agregar.png" class="img-responsive center-block" ng-click="articulo_agregar();"/>
+							16 Oz
+						</div>
+						<div class="col-xs-1">
+							<span class="venta-articulo-cantidad">{{ cantidad }}</span>
+						</div>
+						<div class="col-xs-4">
+							<button class="btn btn-default" type="button" ng-click="articulo_remover();">-</button>
+						</div>
+					</div>
+				</div>
 			</div>
+		</div>
+	</div>
+
+	<br><br>
+
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-4">
+			<div class="form-group">
+                <label class="text-header">Total: </label>
+                <input type="number" class="form-control input-short" style="display: inline-block" required value="{{ total }}" />
+            </div>
+		</div>
+		<div class="col-xs-4">
+			<img src="img/send-reset.png">
 		</div>
 	</div>
 </section>

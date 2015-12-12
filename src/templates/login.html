@@ -1,11 +1,14 @@
 <section class="section container-fluid">
  <div>  
     <div ng-show="error" class="alert alert-danger">{{error}}</div>
-    <form role="form" ng-submit='login()'>
+
+    <div class="row login-container">
+      <div class="col-xs-4 col-xs-offset-4">
+          <form role="form" ng-submit='login()'>
             <fieldset>
                 <img src="img/logo.png" class="img-responsive center-block" />
                 <div class="form-group has-success has-feedback">
-                  <label>Usuario</label>
+                  <label>Cedula</label>
                    <input type="text" name="username" id="username" class="form-control" ng-model="username" required />
                    <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">El usuario es obligatorio</span>
                 </div>
@@ -17,7 +20,8 @@
                 </div>
             </fieldset>
             <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-danger">Login</button>
-
-    </form>  
+          </form>
+      </div>
+    </div>
 </div>
 </section>
