@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('JollyVentasApp.controllers.Login', [])
 
 .controller('LoginController',
