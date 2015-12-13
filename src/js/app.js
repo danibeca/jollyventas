@@ -13,8 +13,7 @@ angular.module('JollyVentasApp', [
 .config(['$routeProvider', function ($routeProvider) {
   $routeProvider
         .when('/', {
-            controller: 'MainController',
-            templateUrl: 'home.html'
+            redirectTo: '/venta'
         })
         .when('/login', {
             controller: 'LoginController',

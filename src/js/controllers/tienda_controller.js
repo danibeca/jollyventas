@@ -5,6 +5,7 @@ angular.module('JollyVentasApp.controllers.Tienda', [])
     function ($scope, $rootScope, $location, AuthenticationService) {
 
         $scope.tiendas = ["Centro Comercial Santafe", "Terminal Del Sur"];
+        $rootScope.vistaPie = '';
 
         $scope.seleccionar = function(){
             $location.path('/tienda-abrir');

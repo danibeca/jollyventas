@@ -6,6 +6,7 @@ angular.module('JollyVentasApp.controllers.Venta', [])
 
     	$scope.cantidad = 0;
     	$scope.total = 0;
+    	$rootScope.vistaPie = 'pie-venta.html';
 
     	$scope.articulo_agregar = function(){
     		var nuevo_valor = $scope.cantidad + 1;
