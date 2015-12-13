@@ -15,7 +15,16 @@
   </head>
   <body ng-app="JollyVentasApp" ng-controller="MainController">
 
-      <!-- Navbars -->
+         <!-- Sidebars -->
+    <div ng-include="'sidebar.html'" 
+         ui-track-as-search-param='true' 
+         ng-if="showSideBar" 
+         class="sidebar sidebar-left">
+    </div>
+
+    <div class="app">
+
+        <!-- Navbars -->
 
       <div class="navbar navbar-app navbar-absolute-top">
         <div class="navbar-brand navbar-brand-center" ui-yield-to="title"></div>
