@@ -1,15 +1,14 @@
 'use strict';
 
-angular.module('JollyVentasApp', [
+angular.module('jollyVentasApp', [
   'ngRoute',
   'ngCookies',
   'mobile-angular-ui',
-  'JollyVentasApp.controllers.Main',
-  'JollyVentasApp.controllers.Login',
-  'JollyVentasApp.controllers.Tienda',
-  'JollyVentasApp.controllers.Compra',
-  'JollyVentasApp.controllers.Venta',
-  'JollyVentasApp.services.Login',
+  'generalModule',
+  'loginModule',
+  'tiendaModule',
+  'compraModule',
+  'ventaModule',  
 ])
 
 .config(['$routeProvider', function ($routeProvider) {

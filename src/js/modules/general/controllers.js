@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('JollyVentasApp.controllers.Main', [])
+angular.module('jollyVentasApp.general.controllers', [])
 
 .controller('MainController', function($scope){
   

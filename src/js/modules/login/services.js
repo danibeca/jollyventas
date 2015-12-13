@@ -1,4 +1,6 @@
-angular.module('JollyVentasApp.services.Login', [])
+'use strict';
+
+angular.module('jollyVentasApp.login.services', [])
 .factory('AuthenticationService',
     ['Base64', '$http', '$cookieStore', '$rootScope', '$timeout',
     function (Base64, $http, $cookieStore, $rootScope, $timeout) {

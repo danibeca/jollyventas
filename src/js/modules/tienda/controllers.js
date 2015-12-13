@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('JollyVentasApp.controllers.Tienda', [])
+angular.module('jollyVentasApp.tienda.controllers', [])
 
 .controller('TiendaSeleccionarController',
     ['$scope', '$rootScope', '$location', 'AuthenticationService',
