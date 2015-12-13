@@ -5,8 +5,14 @@
 .AppleDouble
 .LSOverride
 
-# Icon must end with two \r
-Icon
+# ICONS
+www/res/icon/bada
+www/res/icon/bada-wac
+www/res/icon/blackberry
+www/res/icon/ios
+www/res/icon/tizen
+www/res/icon/webos
+www/res/icon/windows-phone
 
 
 # Thumbnails
