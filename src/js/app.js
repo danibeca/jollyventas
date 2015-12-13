@@ -19,32 +19,32 @@ angular.module('jollyVentasApp', [
         })
         .when('/login', {
             controller: 'LoginController',
-            templateUrl: 'login.html',
+            templateUrl: 'login/login.html',
             reloadOnSearch: false
         })
         .when('/tienda-seleccionar', {
             controller: 'TiendaSeleccionarController',
-            templateUrl: 'tienda-seleccionar.html',
+            templateUrl: 'tienda/seleccionar.html',
             reloadOnSearch: false
         })
         .when('/tienda-abrir', {
             controller: 'TiendaAbrirController',
-            templateUrl: 'tienda-abrir.html',
+            templateUrl: 'tienda/abrir.html',
             reloadOnSearch: false
         })
         .when('/tienda-cerrar', {
             controller: 'TiendaCerrarController',
-            templateUrl: 'tienda-cerrar.html',
+            templateUrl: 'tienda/cerrar.html',
             reloadOnSearch: false
         })
         .when('/venta', {
             controller: 'VentaController',
-            templateUrl: 'venta.html',
+            templateUrl: 'venta/venta.html',
             reloadOnSearch: false
         })
         .when('/solicitud', {
             controller: 'CompraSolicitudController',
-            templateUrl: 'solicitud.html',
+            templateUrl: 'solicitud/solicitud.html',
             reloadOnSearch: false
         })
         .otherwise({ redirectTo: '/login' });        
