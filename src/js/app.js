@@ -53,7 +53,8 @@ angular.module('jollyVentasApp', [
     function ($rootScope, $location, $cookieStore, $http) {
         $rootScope.globals = $cookieStore.get('globals') || {};        
   
-        $rootScope.$on('$locationChangeStart', function (event, next, current) {            
+        $rootScope.$on('$locationChangeStart', function (event, next, current) {
+            $rootScope.showSideBar = true;            
             if ($location.path() !== '/login' && !$rootScope.user) {
                 $location.path('/login');                
             }
