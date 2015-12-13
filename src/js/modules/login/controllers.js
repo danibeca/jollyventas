@@ -11,8 +11,8 @@ angular.module('jollyVentasApp.login.controllers', [])
         $scope.login = function () {
             $scope.dataLoading = true;
             AuthenticationService.Login($scope.username, $scope.password, function(response) {
-                if(response.success) {
-                    AuthenticationService.SetCredentials($scope.username, $scope.password);
+                if(response.valido) {
+                    AuthenticationService.SetCredentials(response);
                     $location.path('/tienda-seleccionar');
                 } else {
                     $scope.error = response.message;
