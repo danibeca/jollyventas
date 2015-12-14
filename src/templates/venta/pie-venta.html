@@ -1,4 +1,13 @@
-Total <input type="text">
-
-<input type="button" value="Ok">
-<input type="button" value="X">
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="form-group">
+            <label class="text-header">Total: </label>
+            <input type="number" class="form-control input-short" style="display: inline-block" required value="{{ total }}" />
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <img src="img/send-reset.png" ng-click="venta_limpiar()">
+        </div>
+    </div>
+</div>
