@@ -3,10 +3,13 @@
 angular.module('jollyVentasApp.venta.controllers', [])
 
 .controller('VentaController',
-    ['$scope', '$rootScope', '$location', 'AuthenticationService', 'VentaService', 
-    function ($scope, $rootScope, $location, AuthenticationService,  VentaService) {
+    ['$scope', '$rootScope', '$location', 'AuthenticationService', 'VentaService', 'StorageService', 
+    function ($scope, $rootScope, $location, AuthenticationService,  VentaService, StorageService) {
 
         var productos = JSON.parse(localStorage.getItem('productos'));
+        console.log(productos);
+        
+        productos = StorageService.obtenerVariableLocalStorage('productos');
         console.log(productos);
 
         $scope.cantidad_11 = [];

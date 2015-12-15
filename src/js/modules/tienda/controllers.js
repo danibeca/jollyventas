@@ -3,7 +3,7 @@
 angular.module('jollyVentasApp.tienda.controllers', [])
 
 .controller('TiendaSeleccionarController',
-    ['$scope', '$rootScope', '$location', 'TiendaService',
+    ['$scope', '$rootScope', '$location', 'TiendaService', 
     function ($scope, $rootScope, $location, TiendaService) {
 
         TiendaService.getList(function(response) {
@@ -17,9 +17,9 @@ angular.module('jollyVentasApp.tienda.controllers', [])
     }])
 
 .controller('TiendaAbrirController',
-    ['$scope', '$rootScope', '$location', 'TiendaService',
-    function ($scope, $rootScope, $location, TiendaService) {
-        
+    ['$scope', '$rootScope', '$location', 'TiendaService', 'StorageService', 
+    function ($scope, $rootScope, $location, TiendaService, StorageService) {
+
         //DELETE THIS -> FIND A BETTER WAY
         $rootScope.vistaPie = "";
 
@@ -40,10 +40,11 @@ angular.module('jollyVentasApp.tienda.controllers', [])
                 console.log('guardando productos');
                 console.log(response.productos);
                 localStorage.setItem("productos", JSON.stringify(response.productos));
+                StorageService.asignarVariableLocalStorage('productos', JSON.stringify(response.productos));
 
                 $location.path('/venta');
             });
-        }
+        };
     }])
 
 .controller('TiendaCerrarController',
