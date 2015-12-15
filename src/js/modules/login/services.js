@@ -40,7 +40,7 @@ angular.module('jollyVentasApp.login.services', [])
  
         };
 
-         service.setCredentials = function (user) {
+        service.setCredentials = function (user) {
             $rootScope.user = user;
             $cookieStore.put('user', $rootScope.user);
         };

@@ -162,5 +162,60 @@ angular.module('jollyVentasApp.tienda.services', [])
  
         };    
 
+        service.abrirTienda = function (callback){
+ 
+            /* Dummy 
+             ----------------------------------------------*/
+            $timeout(function(){
+                var response = {
+                                  "abierto": true,
+                                  "razonsocial": "Mántum S.A.S",
+                                  "nit": "900140127-1",
+                                  "facturacion": {
+                                    "resolucion": "Resolución 432403400 de 10 de agosto de 2015",
+                                    "inicio": "000001",
+                                    "fin": "999999",
+                                    "actual": "000972"
+                                  },
+                                  "productos": [
+                                    {
+                                      "id": 928,
+                                      "nombre": "9 Onz Cherry"
+                                    },
+                                    {
+                                      "id": 929,
+                                      "nombre": "12 Onz Cherry"
+                                    },
+                                    {
+                                      "id": 930,
+                                      "nombre": "9 Onz Apple"
+                                    }
+                                  ],
+                                  "pedidos": [
+                                    {
+                                      "id": 1923
+                                    },
+                                    {
+                                      "id": 1924
+                                    }
+                                  ]
+                                };                
+                callback(response);
+            }, 1000); 
+ 
+            /* Real service
+             ----------------------------------------------*/
+            //$http.get('/api/tienda/abrir', { [ auth: { token : $rootScope.user.token } ],
+            //                                [ puntodeventa: {id : $rootScope.tienda.id } ]
+            //                                [ empleado: {id : $rootScope.user.persona.id } ]
+            //                              })
+            //    .success(function (response) {
+            //        
+            //        callback(response);
+            //    });
+        };
+
+        service.setProducts
+
         return service;
     }]);

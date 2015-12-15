@@ -8,13 +8,12 @@ angular.module('jollyVentasApp.tienda.controllers', [])
 
         TiendaService.getList(function(response) {
             $scope.tiendas = response.puntosdeventa;
-        });        
+        });
 
         $scope.seleccionar = function(tienda){
             $rootScope.tienda = tienda;
             $location.path('/tienda-abrir');
-        }
-
+        };
     }])
 
 .controller('TiendaAbrirController',
@@ -37,7 +36,13 @@ angular.module('jollyVentasApp.tienda.controllers', [])
         });
 
         $scope.TiendaAbrir = function(){
-            $location.path('/venta');
+            TiendaService.abrirTienda(function(response){
+                console.log('guardando productos');
+                console.log(response.productos);
+                localStorage.setItem("productos", JSON.stringify(response.productos));
+
+                $location.path('/venta');
+            });
         }
     }])
 

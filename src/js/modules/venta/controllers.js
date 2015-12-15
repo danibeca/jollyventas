@@ -3,11 +3,15 @@
 angular.module('jollyVentasApp.venta.controllers', [])
 
 .controller('VentaController',
-    ['$scope', '$rootScope', '$location', 'AuthenticationService', 'VentaService',
-    function ($scope, $rootScope, $location, AuthenticationService, VentaService) {
+    ['$scope', '$rootScope', '$location', 'AuthenticationService', 'VentaService', 
+    function ($scope, $rootScope, $location, AuthenticationService,  VentaService) {
 
-    	$scope.cantidad_11 = [];
+        var productos = JSON.parse(localStorage.getItem('productos'));
+        console.log(productos);
+
+        $scope.cantidad_11 = [];
     	$scope.cantidad_16 = [];
+
         $scope.cantidad = {"11": {'watermelon' : "0",
                                     'apple' : "0",
                                     'blue' : "0",
@@ -32,8 +36,6 @@ angular.module('jollyVentasApp.venta.controllers', [])
                         };
         $scope.articulosTodos = ["watermelon", "apple", "blue" ,"cherry", "hersheys", "grape"];
                         
-        VentaService.Articles(almacen_id, function(response) {
-        });
 
     	$scope.articulo_agregar = function(articulo, onzas){
                 
