@@ -17,34 +17,35 @@ angular.module('jollyVentasApp.tienda.controllers', [])
     }])
 
 .controller('TiendaAbrirController',
-    ['$scope', '$rootScope', '$location', 'TiendaService', 'StorageService', 
+    ['$scope', '$rootScope', '$location', 'TiendaService', 'StorageService',
     function ($scope, $rootScope, $location, TiendaService, StorageService) {
-
-        //DELETE THIS -> FIND A BETTER WAY
-        $rootScope.vistaPie = "";
+        
+        $rootScope.vistaPie = "tienda/pie-abrir.html";
 
         TiendaService.getInformacionCaja(function(response) {
-            $scope.caja = response.caja;
+            $scope.caja = response.caja;            
+            StorageService.asignarVariableLocalStorage("caja", JSON.stringify(response));              
         });
 
         TiendaService.getInventario(function(response) {
             $scope.almacen = response.almacen;
+            StorageService.asignarVariableLocalStorage("almacen", JSON.stringify(response.almacen));  
         });
 
-        TiendaService.getInventario(function(response) {
-            $scope.inventario = response.caja;
-        });
-
-        $scope.TiendaAbrir = function(){
+        $rootScope.abrir_tienda = function(){
             TiendaService.abrirTienda(function(response){
-                console.log('guardando productos');
-                console.log(response.productos);
-                localStorage.setItem("productos", JSON.stringify(response.productos));
-                StorageService.asignarVariableLocalStorage('productos', JSON.stringify(response.productos));
-
-                $location.path('/venta');
+                StorageService.asignarVariableLocalStorage("productos", JSON.stringify(response.productos));  
+                $location.path('/venta');           
             });
         };
+
+        $rootScope.limpiar_tienda = function(){
+            TiendaService.getInformacionCaja(function(response) {
+              $scope.caja = response.caja;                            
+            });         
+            
+        };
+
     }])
 
 .controller('TiendaCerrarController',
