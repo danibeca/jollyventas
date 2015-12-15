@@ -3,13 +3,16 @@
 angular.module('jollyVentasApp.tienda.controllers', [])
 
 .controller('TiendaSeleccionarController',
-    ['$scope', '$rootScope', '$location', 'AuthenticationService',
-    function ($scope, $rootScope, $location, AuthenticationService) {
+    ['$scope', '$rootScope', '$location', 'TiendaService',
+    function ($scope, $rootScope, $location, TiendaService) {
 
-        $scope.tiendas = ["Centro Comercial Santafe", "Terminal Del Sur"];
+        TiendaService.getList(function(response) {
+            $scope.tiendas = response.puntosdeventa;
+        });
         $rootScope.vistaPie = '';
 
-        $scope.seleccionar = function(){
+        $scope.seleccionar = function(tienda){
+            $rootScope.tienda = tienda;
             $location.path('/tienda-abrir');
         }
 

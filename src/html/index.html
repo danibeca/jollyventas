@@ -31,10 +31,10 @@
 
         <div class="float-right sesion-info">
             <span class="sesion-empleado">{{ user.persona.nombre }} </span>
-            <span class="sesion-tienda">{{ puntosdeventa.nombre }} </span>
+            <span class="sesion-tienda">{{ tienda.nombre }} </span>
         </div>
           
-        <div class="btn-group pull-left">
+        <div class="btn-group pull-left" ng-if="showSideBar">
           <div ui-toggle="uiSidebarLeft" class="btn sidebar-toggle">
             <i class="fa fa-bars"></i> 
           </div>
