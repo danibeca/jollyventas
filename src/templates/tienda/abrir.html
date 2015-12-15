@@ -1,54 +1,58 @@
-<section class="section container-fluid">
-
+<section class="section container-fluid" ng-controller="TiendaAbrirController">
     <div class="ancho-margen">
-        
         <form role="form" ng-submit='TiendaAbrir()'>
             <fieldset>
-                <div class="form-group">
-                    <label class="text-header">Dinero incial: </label>
-                    <input type="number" value="1" class="form-control input-short" style="display: inline-block" required />
+                <div class="row">
+                    <label class="text-vcenter
+                         col-xs-4 
+                         col-md-3 
+                         col-lg-2"> Dinero inicial: </label>
+                    <div class="form-group has-success
+                         col-xs-offset-1 col-xs-5
+                         col-md-offset-0 col-md-2 
+                         col-lg-offset-0 col-lg-2 ">                        
+                        <input type="number" class="form-control" min="1" value="{{caja.dineroactual}}"required />
+                    </div>
+                    <div class="col-xs-1
+                                col-md-7
+                                col-lg-8"></div>  
                 </div>
-                <br>
-                <div style="text-align:center;">
-                    <table class="col-xs-12 table table-striped tabla-app" style="margin: 0 auto;">
-                        <tr>
-                            <td>
-                                <img src="img/vaso.png" class="img-responsive center-block" width="70px" />
-                            </td>
-                            <td>250 vasos</td>
-                            <td class="td-input"><input type="number" value="1" class="form-control input-short" required /></td>
+                <br/>        
+                <div class="row">
+                    <table class="table tabla-app">         
+                      <tbody>  
+                        <tr ng-repeat="articulo in almacen.articulos">
+                            <td class="col-xs-2 col-xs-offset-0
+                                       col-md-1 col-md-offset-2
+                                       col-lg-1 col-lg-offset-2
+                            ">
+
+                                <img src="img/articulos/{{ articulo.img }}" class="img-responsive center-block"/></td>
+                            <td class="col-xs-4 col-xs-offset-0
+                                       col-md-2 col-md-offset-0
+                                       col-lg-2 col-lg-offset-0
+
+                            ">{{ articulo.nombre }}</td>
+                            <td class="col-xs-1 col-xs-offset-0
+                                       col-md-1 col-md-offset-0
+                                       col-lg-1 col-lg-offset-0
+                            ">{{ articulo.cantidad }}</td>
+                            <td class="col-xs-5 col-xs-offset-0
+                                       col-md-1 col-md-offset-5
+                                       col-lg-1 col-lg-offset-5
+                            "><input type="number" class="form-control" name="cantidad[{{ articulo.id }}]" min="1" max="5000" value ="{{ articulo.cantidad }}" required/></td>
                         </tr>
-                        <tr>
-                            <td>
-                                <img src="img/vaso.png" class="img-responsive center-block" width="70px" />
-                            </td>
-                            <td>90 Blue raspberry</td>
-                            <td class="td-input"><input type="number" value="1" class="form-control input-short" required /></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="img/vaso.png" class="img-responsive center-block" width="70px" />
-                            </td>
-                            <td>80 Cherry</td>
-                            <td class="td-input"><input type="number" value="1" class="form-control input-short" required/></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="img/vaso.png" class="img-responsive center-block" width="70px" />
-                            </td>
-                            <td>80 Apple</td>
-                            <td class="td-input"><input type="number"  value="1" class="form-control input-short" required /></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-danger">Confirmar</button>
-                            </td>
-                        </tr>
+                       </tbody> 
                     </table>
                 </div>
+                <div class="row">
+                    <div class="col-xs-offset-9 col-xs-3
+                                col-md-offset-10 col-md-2 
+                                col-lg-offset-11 col-lg-1 ">
+                        <button type="submit" ng-disabled="form.$invalid || dataLoading" class="btn btn-danger">Confirmar</button>                        
+                    </div>  
+                </div>
             </fieldset>
-        </form>
+        </form>    
     </div>
 </section>

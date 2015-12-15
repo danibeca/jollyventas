@@ -8,8 +8,7 @@ angular.module('jollyVentasApp.tienda.controllers', [])
 
         TiendaService.getList(function(response) {
             $scope.tiendas = response.puntosdeventa;
-        });
-        $rootScope.vistaPie = '';
+        });        
 
         $scope.seleccionar = function(tienda){
             $rootScope.tienda = tienda;
@@ -19,8 +18,23 @@ angular.module('jollyVentasApp.tienda.controllers', [])
     }])
 
 .controller('TiendaAbrirController',
-    ['$scope', '$rootScope', '$location', 'AuthenticationService',
-    function ($scope, $rootScope, $location, AuthenticationService) {
+    ['$scope', '$rootScope', '$location', 'TiendaService',
+    function ($scope, $rootScope, $location, TiendaService) {
+        
+        //DELETE THIS -> FIND A BETTER WAY
+        $rootScope.vistaPie = "";
+
+        TiendaService.getInformacionCaja(function(response) {
+            $scope.caja = response.caja;
+        });
+
+        TiendaService.getInventario(function(response) {
+            $scope.almacen = response.almacen;
+        });
+
+        TiendaService.getInventario(function(response) {
+            $scope.inventario = response.caja;
+        });
 
         $scope.TiendaAbrir = function(){
             $location.path('/venta');
@@ -28,8 +42,8 @@ angular.module('jollyVentasApp.tienda.controllers', [])
     }])
 
 .controller('TiendaCerrarController',
-    ['$scope', '$rootScope', '$location', 'AuthenticationService',
-    function ($scope, $rootScope, $location, AuthenticationService) {
+    ['$scope', '$rootScope', '$location', 'TiendaService',
+    function ($scope, $rootScope, $location, TiendaService) {
 
         $scope.texto = "cerrando";
     }]);
