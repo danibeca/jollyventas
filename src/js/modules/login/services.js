@@ -6,7 +6,7 @@ angular.module('jollyVentasApp.login.services', [])
     function ($http, $cookieStore, $rootScope, $timeout) {
         var service = {};
  
-        service.Login = function (username, password, callback) {
+        service.login = function (username, password, callback) {
  
             /* Dummy authentication for testing, uses $timeout to simulate api call
              ----------------------------------------------*/
@@ -40,13 +40,13 @@ angular.module('jollyVentasApp.login.services', [])
  
         };
 
-         service.SetCredentials = function (user) {
+         service.setCredentials = function (user) {
             $rootScope.user = user;
             $cookieStore.put('user', $rootScope.user);
         };
   
   
-        service.ClearCredentials = function () {
+        service.clearCredentials = function () {
             $rootScope.user = {};  
             $cookieStore.remove('user');          
         };
