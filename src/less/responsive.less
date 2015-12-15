@@ -1,3 +1,44 @@
-@import "mobile-angular-ui/src/less/mobile-angular-ui-desktop.less";
+@import "bootstrap/less/variables.less";
+@import "bootstrap/less/mixins.less";
 @import "mixins.less";
 @import "variables.less";
+
+@media (min-width: @screen-md-min) {
+  .make-grid(md);
+}
+@media (min-width: @screen-lg-min) {
+  .make-grid(lg);
+}
+
+@media (orientation: landscape) {
+	.image-logo{
+	    max-width: 15%;
+	}
+}
+
+@media (min-width: @screen-md-min) {
+	.section-login {	    
+	    background: url('../img/login1.png'), url('../img/login2.png') ;
+	    background-size: 210px 174px;
+	    background-repeat: no-repeat;
+	    background-position: left center, right center;
+	    margin-right: 30px;
+	}
+
+	.tabla-app > tbody > tr >td {
+	    font-size: @generalFontSize;
+	}
+
+	.form-control {
+ 	    font-size: @generalFontSize;
+    }	
+
+    label {
+ 	    font-size: @generalFontSize;
+    }
+
+    .text-vcenter {
+    	padding-top: 15px;
+	}
+
+}

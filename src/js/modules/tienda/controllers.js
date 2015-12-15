@@ -3,21 +3,38 @@
 angular.module('jollyVentasApp.tienda.controllers', [])
 
 .controller('TiendaSeleccionarController',
-    ['$scope', '$rootScope', '$location', 'AuthenticationService',
-    function ($scope, $rootScope, $location, AuthenticationService) {
+    ['$scope', '$rootScope', '$location', 'TiendaService',
+    function ($scope, $rootScope, $location, TiendaService) {
 
-        $scope.tiendas = ["Centro Comercial Santafe", "Terminal Del Sur"];
-        $rootScope.vistaPie = '';
+        TiendaService.getList(function(response) {
+            $scope.tiendas = response.puntosdeventa;
+        });        
 
-        $scope.seleccionar = function(){
+        $scope.seleccionar = function(tienda){
+            $rootScope.tienda = tienda;
             $location.path('/tienda-abrir');
         }
 
     }])
 
 .controller('TiendaAbrirController',
-    ['$scope', '$rootScope', '$location', 'AuthenticationService',
-    function ($scope, $rootScope, $location, AuthenticationService) {
+    ['$scope', '$rootScope', '$location', 'TiendaService',
+    function ($scope, $rootScope, $location, TiendaService) {
+        
+        //DELETE THIS -> FIND A BETTER WAY
+        $rootScope.vistaPie = "";
+
+        TiendaService.getInformacionCaja(function(response) {
+            $scope.caja = response.caja;
+        });
+
+        TiendaService.getInventario(function(response) {
+            $scope.almacen = response.almacen;
+        });
+
+        TiendaService.getInventario(function(response) {
+            $scope.inventario = response.caja;
+        });
 
         $scope.TiendaAbrir = function(){
             $location.path('/venta');
@@ -25,8 +42,8 @@ angular.module('jollyVentasApp.tienda.controllers', [])
     }])
 
 .controller('TiendaCerrarController',
-    ['$scope', '$rootScope', '$location', 'AuthenticationService',
-    function ($scope, $rootScope, $location, AuthenticationService) {
+    ['$scope', '$rootScope', '$location', 'TiendaService',
+    function ($scope, $rootScope, $location, TiendaService) {
 
         $scope.texto = "cerrando";
     }]);
