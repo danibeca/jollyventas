@@ -2,8 +2,8 @@
 
 angular.module('jollyVentasApp.tienda.services', [])
 .factory('TiendaService',
-    ['$http', '$rootScope', '$timeout',
-    function ($http, $rootScope, $timeout) {
+    ['$http', '$rootScope', '$timeout', 'StorageService',
+    function ($http, $rootScope, $timeout, StorageService) {
         var service = {};
 
         service.getList = function (callback) {
@@ -109,7 +109,7 @@ angular.module('jollyVentasApp.tienda.services', [])
                                       "cantidad": "250",
                                       "costounitario": "10",
                                       "preciounitario": "20",
-                                      "img": "MP001.png"
+                                      "img": "vaso.png"
                                     },
                                     {
                                       "id": "964",
@@ -120,7 +120,7 @@ angular.module('jollyVentasApp.tienda.services', [])
                                       "cantidad": "90",
                                       "costounitario": "50",
                                       "preciounitario": "100",
-                                      "img": "MP002.png"
+                                      "img": "jarabe1.png"
                                     },
                                     {
                                       "id": "963",
@@ -131,7 +131,7 @@ angular.module('jollyVentasApp.tienda.services', [])
                                       "cantidad": "60",
                                       "costounitario": "50",
                                       "preciounitario": "100",
-                                      "img": "MP003.png"
+                                      "img": "jarabe2.png"
                                     },
                                     {
                                       "id": "966",
@@ -142,7 +142,7 @@ angular.module('jollyVentasApp.tienda.services', [])
                                       "cantidad": "45",
                                       "costounitario": "50",
                                       "preciounitario": "100",
-                                      "img": "MP004.png"
+                                      "img": "jarabe3.png"
                                     }
                                   ]
                                 }
@@ -162,8 +162,27 @@ angular.module('jollyVentasApp.tienda.services', [])
  
         };    
 
-        service.abrirTienda = function (callback){
+        service.abrirTienda = function (punto_venta_id, empleado_id, caja_id, caja_actual, productos, callback){
  
+            var apertura = {
+                            "auth": {
+                                "token": "AOQWEIPQEW9120"
+                              },
+                              "puntodeventa": {
+                                "id": punto_venta_id
+                              },
+                              "empleado": {
+                                "id": empleado_id
+                              },
+                              "caja": {
+                                "id": caja_id,
+                                "dinero": caja_actual
+                              },
+                              "articulos": productos
+                            };
+            
+            StorageService.asignarVariableLocalStorage("acumulado_caja", 0);
+            
             /* Dummy 
              ----------------------------------------------*/
             $timeout(function(){
@@ -205,15 +224,53 @@ angular.module('jollyVentasApp.tienda.services', [])
  
             /* Real service
              ----------------------------------------------*/
-            //$http.get('/api/tienda/abrir', { [ auth: { token : $rootScope.user.token } ],
-            //                                [ puntodeventa: {id : $rootScope.tienda.id } ]
-            //                                [ empleado: {id : $rootScope.user.persona.id } ]
-            //                              })
+            //$http.get('/api/tienda/abrir', apertura)
             //    .success(function (response) {
             //        
             //        callback(response);
             //    });
         };
+
+
+        service.cerrarTienda = function (punto_venta_id, empleado_id, caja_id, caja_actual, productos, cierre_nota, callback){
+ 
+            var cierre = {
+                            "auth": {
+                                "token": "AOQWEIPQEW9120"
+                              },
+                              "puntodeventa": {
+                                "id": punto_venta_id
+                              },
+                              "empleado": {
+                                "id": empleado_id
+                              },
+                              "caja": {
+                                "id": caja_id,
+                                "dinero": caja_actual
+                              },
+                              "articulos": productos,
+                              "observaciones": cierre_nota
+                            };
+            console.log('cerrand');
+            console.log(cierre);
+            StorageService.asignarVariableLocalStorage("acumulado_caja", 0);
+            
+            /* Dummy 
+             ----------------------------------------------*/
+            $timeout(function(){
+                var response = {};                
+                callback(response);
+            }, 1000); 
+ 
+            /* Real service
+             ----------------------------------------------*/
+            //$http.get('/api/tienda/cerrar', cierre)
+            //    .success(function (response) {
+            //        
+            //        callback(response);
+            //    });
+        };
+        
 
         service.setProducts
 

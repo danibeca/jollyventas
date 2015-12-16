@@ -8,7 +8,7 @@ angular.module('jollyVentasApp.venta.controllers', [])
 
         var producto_disponible = JSON.parse(StorageService.obtenerVariableLocalStorage('productos'));
 
-        var producto_codigo = {
+            var producto_codigo = {
                                     "901" : {"nombre": "watermelon", "onzas": "9" },
                                     "902" : {"nombre": "watermelon", "onzas": "12" },
                                     "903" : {"nombre": "apple", "onzas": "9" },
@@ -135,6 +135,80 @@ angular.module('jollyVentasApp.venta.controllers', [])
         };
 
         $rootScope.venta_crear = function(){
+            var producto_codigo = {"9": {'watermelon' : '901',
+                                        'apple' : '903',
+                                        'blue' : '905',
+                                        'cherry' : '907',
+                                        'hersheys' : '909',
+                                        'grape' : '929'
+                                    },
+                                "12": {'watermelon' : '902',
+                                        'apple' : '904',
+                                        'blue' : '906',
+                                        'cherry' : '908',
+                                        'hersheys' : '928',
+                                        'grape' : '930'
+                                    }
+                                };
+
             var total = $rootScope.total;
+            var articulos = document.getElementsByClassName('js_cantidad');
+            var i
+                , id
+                , cantidad
+                , sabor
+                , onzas
+                , valor_unitario = 4629
+                , subtotal
+                , producto
+                , productos = [];
+
+            for (i = 0; i < articulos.length; i++) {
+                cantidad = parseInt(articulos[i].value);
+                if(cantidad !== 0){
+                    sabor = articulos[i].getAttribute("data-articulo");
+                    onzas = articulos[i].getAttribute("data-onzas");
+                    id = producto_codigo[onzas][sabor];
+
+                    subtotal = valor_unitario * cantidad;
+                    producto = {"id": id,
+                                "nombre": "12 Onz Cherry",
+                                "cantidad": cantidad,
+                                "valorunitario": valor_unitario,
+                                "valor": subtotal};
+                    productos.push(producto);
+                }
+            }
+
+            var punto_venta = JSON.parse(StorageService.obtenerVariableLocalStorage('puntoventa'));
+            var consecutivo = StorageService.obtenerVariableLocalStorage('consecutivo');
+            consecutivo++;
+            
+            StorageService.asignarVariableLocalStorage("consecutivo", consecutivo);
+            
+            var acumulado_caja = StorageService.obtenerVariableLocalStorage('acumulado_caja');
+            var nuevo_acumulado = parseInt(acumulado_caja) + parseInt(total);
+            StorageService.asignarVariableLocalStorage("acumulado_caja", nuevo_acumulado);
+
+            VentaService.crearVenta(punto_venta.id, punto_venta.idempleado, productos, total, consecutivo);
+            
+            $rootScope.total = 0;
+            $scope.cantidad = {"9": {'watermelon' : "0",
+                                    'apple' : "0",
+                                    'blue' : "0",
+                                    'cherry' : "0",
+                                    'hersheys' : "0",
+                                    'grape' : "0"
+                                },
+                            "12": {'watermelon' : "0",
+                                    'apple' : "0",
+                                    'blue' : "0",
+                                    'cherry' : "0",
+                                    'hersheys' : "0",
+                                    'grape' : "0"
+                                }
+                            };
+                            
+            
         };
     }]);

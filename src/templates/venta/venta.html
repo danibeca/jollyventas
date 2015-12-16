@@ -18,7 +18,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <input class="articulo-cantidad" ng-model="cantidad['9'][articulo]">
+                                    <input class="articulo-cantidad js_cantidad" data-articulo="{{ articulo }}" data-onzas="9" ng-model="cantidad['9'][articulo]">
                                 </td>
                                 <td>
                                     <button class="btn btn-default" type="button" ng-click="articulo_remover(articulo, '9');">-</button>
@@ -34,7 +34,7 @@
                                     <span class="tamano">12 Oz</span>
                                 </td>
                                 <td>
-                                    <input class="articulo-cantidad" ng-model="cantidad['12'][articulo]">
+                                    <input class="articulo-cantidad js_cantidad" data-articulo="{{ articulo }}" data-onzas="12" ng-model="cantidad['12'][articulo]">
                                 </td>
                                 <td>
                                     <button class="btn btn-default" type="button" ng-click="articulo_remover(articulo, '12');">-</button>
