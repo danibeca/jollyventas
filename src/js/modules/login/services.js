@@ -2,8 +2,8 @@
 
 angular.module('jollyVentasApp.login.services', [])
 .factory('AuthenticationService',
-    ['$http', '$cookieStore', '$rootScope', '$timeout',
-    function ($http, $cookieStore, $rootScope, $timeout) {
+    ['$http', '$cookieStore', '$rootScope', '$timeout', 'StorageService',
+    function ($http, $cookieStore, $rootScope, $timeout, StorageService) {
         var service = {};
  
         service.login = function (username, password, callback) {
@@ -43,12 +43,14 @@ angular.module('jollyVentasApp.login.services', [])
         service.setCredentials = function (user) {
             $rootScope.user = user;
             $cookieStore.put('user', $rootScope.user);
+            StorageService.asignarVariableLocalStorage('user', JSON.stringify($rootScope.user));
         };
   
   
         service.clearCredentials = function () {
             $rootScope.user = {};  
             $cookieStore.remove('user');          
+            StorageService.eliminarVariableLocalStorage('user');
         };
   
         return service;

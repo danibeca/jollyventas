@@ -9,33 +9,35 @@
                 </div>
                 <div class="col-md-6">
                     <div class="row seleccion-cantidad">
-                        <table class="tabla-app">
+                        <table class="tabla-app" ng-if="showArticulo['9'][articulo]">
                             <tr>
                                 <td>
-                                    <input type="button" class="agregar agregar-11 agregar-11-{{ articulo }}" ng-click="articulo_agregar(articulo, '11');">
-                                    <span class="tamano">9 Oz</span>
+                                    <div>
+                                        <input type="button" class="agregar agregar-11 agregar-11-{{ articulo }}" ng-click="articulo_agregar(articulo, '9');">
+                                        <span class="tamano">9 Oz</span>
+                                    </div>
                                 </td>
                                 <td>
-                                    <input class="articulo-cantidad" ng-model="cantidad[11][articulo]">
+                                    <input class="articulo-cantidad" ng-model="cantidad['9'][articulo]">
                                 </td>
                                 <td>
-                                    <button class="btn btn-default" type="button" ng-click="articulo_remover(articulo, '11');">-</button>
+                                    <button class="btn btn-default" type="button" ng-click="articulo_remover(articulo, '9');">-</button>
                                 </td>
                             </tr>
                         </table>
                     </div>
                     <div class="row seleccion-cantidad">
-                        <table class="tabla-app">
+                        <table class="tabla-app" ng-if="showArticulo['12'][articulo]">
                             <tr>
                                 <td>
-                                    <input type="button" class="agregar agregar-16 agregar-16-{{ articulo }}" ng-click="articulo_agregar(articulo, '16');">
+                                    <input type="button" class="agregar agregar-16 agregar-16-{{ articulo }}" ng-click="articulo_agregar(articulo, '12');">
                                     <span class="tamano">12 Oz</span>
                                 </td>
                                 <td>
-                                    <input class="articulo-cantidad" ng-model="cantidad[16][articulo]">
+                                    <input class="articulo-cantidad" ng-model="cantidad['12'][articulo]">
                                 </td>
                                 <td>
-                                    <button class="btn btn-default" type="button" ng-click="articulo_remover(articulo, '16');">-</button>
+                                    <button class="btn btn-default" type="button" ng-click="articulo_remover(articulo, '12');">-</button>
                                 </td>
                             </tr>
                         </table>

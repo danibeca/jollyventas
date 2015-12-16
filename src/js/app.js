@@ -49,18 +49,28 @@ angular.module('jollyVentasApp', [
         })
         .otherwise({ redirectTo: '/login' });        
 }])
-.run(['$rootScope', '$location', '$cookieStore', '$http',
-    function ($rootScope, $location, $cookieStore, $http) {
+.run(['$rootScope', '$location', '$cookieStore', '$http', 'StorageService',
+    function ($rootScope, $location, $cookieStore, $http, StorageService) {
         $rootScope.globals = $cookieStore.get('user') || {};        
         
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             $rootScope.showSideBar = true;
-            if ($location.path() !== '/login' && !$rootScope.user) {
-                $location.path('/login');                
+            
+            var user = JSON.parse(StorageService.obtenerVariableLocalStorage('user'));
+            if ($location.path() !== '/login' && !user) {
+                $location.path('/login');
             }
-            if ($location.path() == '/login'){
+
+            var tienda = JSON.parse(StorageService.obtenerVariableLocalStorage('tienda'));
+            if (!tienda || !tienda.abierto){
                 $rootScope.showSideBar = false;
             }
+
+            // TODO: Evitar que llegue por navegador a las rutas 
+            // - /login
+            // - /tienda-seleccionar
+            // - /tienda-abrir
+            
         });
     }]);
 

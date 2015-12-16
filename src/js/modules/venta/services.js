@@ -2,16 +2,12 @@
 
 angular.module('jollyVentasApp.venta.services', [])
 .factory('VentaService',
-    ['$http', '$cookieStore', '$rootScope', '$timeout',
-    function ($http, $cookieStore, $rootScope, $timeout) {
+    ['$http', '$rootScope', '$timeout',
+    function ($http, $rootScope, $timeout) {
         var service = {};
  
-        service.Articles = function (almacen, callback) {
- 
-            $timeout(function(){
-                var response = {};
-                callback(response);
-            }, 1000); 
+        service.iniciarVista = function (producto_disponible) {
+            // TODO: Traer lógica del controlador
         };
         return service;
     }]);

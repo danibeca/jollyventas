@@ -34,7 +34,9 @@ angular.module('jollyVentasApp.tienda.controllers', [])
 
         $rootScope.abrir_tienda = function(){
             TiendaService.abrirTienda(function(response){
-                StorageService.asignarVariableLocalStorage("productos", JSON.stringify(response.productos));  
+                StorageService.asignarVariableLocalStorage("tienda", JSON.stringify(response));  
+                StorageService.asignarVariableLocalStorage("productos", JSON.stringify(response.productos));
+                StorageService.asignarVariableLocalStorage("consecutivo", JSON.stringify(response.facturacion.actual));  
                 $location.path('/venta');           
             });
         };

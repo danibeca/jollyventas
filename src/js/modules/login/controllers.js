@@ -3,9 +3,10 @@
 angular.module('jollyVentasApp.login.controllers', [])
 
 .controller('LoginController',
-    ['$scope', '$rootScope', '$location', 'AuthenticationService',
-    function ($scope, $rootScope, $location, AuthenticationService) {
+    ['$scope', '$rootScope', '$location', 'AuthenticationService', 'StorageService',
+    function ($scope, $rootScope, $location, AuthenticationService, StorageServices) {
         
+        StorageServices.eliminarLocalStorage();
         AuthenticationService.clearCredentials();  
         $scope.login = function () {
             $scope.dataLoading = true;

@@ -7,28 +7,20 @@ angular.module('jollyVentasApp.general.services', [])
         var service = {};
  
         service.obtenerVariableLocalStorage = function (sNombreVariable) {
-            return JSON.parse(localStorage.getItem(sNombreVariable));
+            return localStorage.getItem(sNombreVariable);
         };
         
         service.asignarVariableLocalStorage = function (sNombreVariable, Valor){
-            localStorage.setItem(sNombreVariable, JSON.stringify(Valor));
+            localStorage.setItem(sNombreVariable, Valor);
+        };
+        
+        service.eliminarVariableLocalStorage = function (sNombreVariable){
+            window.localStorage.removeItem(sNombreVariable);
+        };
+        
+        service.eliminarLocalStorage = function (){
+            window.localStorage.clear();
         };
         
         return service;
     }]);
-
-/*
-
-localstorage.asignarVariableLocalStorage = function (sNombreVariable, Valor){
-    window.localStorage.setItem(sNombreVariable, Valor);
-};
-
-localstorage.eliminarVariableLocalStorage = function (sNombreVariable){
-    window.localStorage.removeItem(sNombreVariable);
-};
-
-localstorage.eliminarLocalStorage = function (){
-    window.localStorage.clear();
-};
-*/
-
