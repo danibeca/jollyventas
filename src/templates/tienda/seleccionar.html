@@ -1,8 +1,8 @@
-<section class="section container-fluid" ng-controller="TiendaSeleccionarController">
+<section class="section container-fluid">
     <div class="ancho-margen">        
         <h1 class="page-header">Selecciona tu tienda</h1>
         <ul>
-            <li class="contenedor-blanco activo" ng-repeat="tienda in tiendas" ng-click="seleccionar(tienda)"> 
+            <li class="contenedor-blanco activo" ng-repeat="tienda in vm.tiendas" ng-click="vm.seleccionar(tienda)"> 
                 <span class="encabezado">
                         {{ tienda.nombre }} 
                 </span>

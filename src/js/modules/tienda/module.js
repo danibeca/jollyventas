@@ -1,5 +1,5 @@
-'use strict';
+(function() {
+    'use strict';
 
-angular.module('tiendaModule',['jollyVentasApp.tienda.controllers',
-                               'jollyVentasApp.tienda.services'
-              ]);
+    angular.module('jollyVentasApp.tienda', []);
+})();

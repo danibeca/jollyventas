@@ -214,10 +214,10 @@ gulp.task('js', function() {
       gulp.src('./src/js/**/*.js').pipe(ngFilesort()),
       gulp.src(['src/templates/**/*.html']).pipe(templateCache({ module: 'jollyVentasApp' }))
     )
-    .pipe(sourcemaps.init())
-    .pipe(concat('app.js'))
     .pipe(ngAnnotate())
     .pipe(uglify())
+    .pipe(sourcemaps.init())
+    .pipe(concat('app.js'))        
     .pipe(rename({suffix: '.min'}))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(path.join(config.dest, 'js')));

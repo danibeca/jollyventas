@@ -4,9 +4,10 @@ angular.module('jollyVentasApp', [
   'ngRoute',
   'ngCookies',
   'mobile-angular-ui',
+
   'generalModule',
   'loginModule',
-  'tiendaModule',
+  'jollyVentasApp.tienda',
   'compraModule',
   'ventaModule',  
 ])
@@ -23,9 +24,13 @@ angular.module('jollyVentasApp', [
             reloadOnSearch: false
         })
         .when('/tienda-seleccionar', {
-            controller: 'TiendaSeleccionarController',
+            controller: 'Tiendas',
             templateUrl: 'tienda/seleccionar.html',
-            reloadOnSearch: false
+            controllerAs: 'vm',
+            reloadOnSearch: false,
+            resolve: {
+                tiendaPrepService: tiendaPrepService
+            }
         })
         .when('/tienda-abrir', {
             controller: 'TiendaAbrirController',
@@ -74,4 +79,8 @@ angular.module('jollyVentasApp', [
         });
     }]);
 
+/* @ngInject */
+function tiendaPrepService(tiendaService) {
+    return tiendaService.getList();
+}
 

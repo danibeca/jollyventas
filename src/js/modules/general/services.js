@@ -21,6 +21,14 @@ angular.module('jollyVentasApp.general.services', [])
         service.eliminarLocalStorage = function (){
             window.localStorage.clear();
         };
+
+        service.obtenerJsonObject = function (sNombreVariable) {
+            return JSON.parse(localStorage.getItem(sNombreVariable));
+        };
+
+        service.guardarJsonObject  = function (sNombreVariable, valor){
+            localStorage.setItem(sNombreVariable, JSON.stringify(valor));
+        };
         
         return service;
     }]);
