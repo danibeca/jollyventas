@@ -1,6 +1,5 @@
-'use strict';
+(function() {
+    'use strict';
 
-angular.module('generalModule',['jollyVentasApp.general.controllers',
-                                'jollyVentasApp.general.services',
-                                'jollyVentasApp.general.directives',
-                                ]);
+    angular.module('app.general', []);
+})();

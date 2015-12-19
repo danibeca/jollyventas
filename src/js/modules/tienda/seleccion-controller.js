@@ -2,20 +2,20 @@
     'use strict';
 
     angular
-        .module('jollyVentasApp.tienda')
-        .controller('Tiendas', Tiendas);
+        .module('app.tienda')
+        .controller('TiendaSeleccion', Seleccion);
 
     ////////////////////////////////////////////////////////////////////////////////
     /* @ngInject */
-    function Tiendas($rootScope,$location, tiendaPrepService, StorageService) {
+    function Seleccion($rootScope, $location, tiendaPrepService, tiendaService) {
 
         var vm = this;
         vm.tiendas = tiendaPrepService.puntosdeventa;
         vm.seleccionar = seleccionar;
         
         function seleccionar(tienda) {
-            $rootScope.tienda = tienda;
-            StorageService.guardarJsonObject("puntoventa", tienda);              
+            $rootScope.tiendaNombre = tienda.nombre;
+            tiendaService.setTiendaActiva(tienda);              
             $location.path('/tienda-abrir');            
         }
     }

@@ -1,34 +1,50 @@
-'use strict';
+(function() {
+    'use strict';
 
-angular.module('jollyVentasApp.general.services', [])
-.factory('StorageService',
-    ['$http', '$cookieStore', '$rootScope', '$timeout',
-    function ($http, $cookieStore, $rootScope, $timeout) {
-        var service = {};
- 
-        service.obtenerVariableLocalStorage = function (sNombreVariable) {
-            return localStorage.getItem(sNombreVariable);
-        };
-        
-        service.asignarVariableLocalStorage = function (sNombreVariable, Valor){
-            localStorage.setItem(sNombreVariable, Valor);
-        };
-        
-        service.eliminarVariableLocalStorage = function (sNombreVariable){
-            window.localStorage.removeItem(sNombreVariable);
-        };
-        
-        service.eliminarLocalStorage = function (){
-            window.localStorage.clear();
+    angular
+        .module('app.general')
+        .factory('storageService', storageService);
+
+
+    /* @ngInject */
+    function storageService() {
+        var service = {
+            obtenerVariableLocalStorage: obtenerVariableLocalStorage,
+            asignarVariableLocalStorage: asignarVariableLocalStorage,
+            eliminarVariableLocalStorage: eliminarVariableLocalStorage,
+            clear: clear,
+            getJsonObject: getJsonObject,
+            setJsonObject: setJsonObject,
         };
 
-        service.obtenerJsonObject = function (sNombreVariable) {
-            return JSON.parse(localStorage.getItem(sNombreVariable));
-        };
-
-        service.guardarJsonObject  = function (sNombreVariable, valor){
-            localStorage.setItem(sNombreVariable, JSON.stringify(valor));
-        };
-        
         return service;
-    }]);
+        
+        ///////////////////////////////////////////////////////////////////
+
+        function obtenerVariableLocalStorage(sNombreVariable) {
+            return localStorage.getItem(sNombreVariable);
+        }
+        
+        function asignarVariableLocalStorage(sNombreVariable, Valor){
+            localStorage.setItem(sNombreVariable, Valor);
+        }
+        
+        function eliminarVariableLocalStorage(sNombreVariable){
+            window.localStorage.removeItem(sNombreVariable);
+        }
+        
+        function clear(){
+            window.localStorage.clear();
+        }
+
+        function getJsonObject(sNombreVariable) {
+            return JSON.parse(localStorage.getItem(sNombreVariable));
+        }
+
+        function setJsonObject(sNombreVariable, valor){
+            localStorage.setItem(sNombreVariable, JSON.stringify(valor));
+        }
+    }
+})();
+        
+

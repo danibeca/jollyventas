@@ -2,7 +2,7 @@
 
 angular.module('jollyVentasApp.venta.services', [])
 .factory('VentaService',
-    ['$http', '$rootScope', '$timeout', 'StorageService',
+    ['$http', '$rootScope', '$timeout', 'storageService',
     function ($http, $rootScope, $timeout, StorageService) {
         var service = {};
  

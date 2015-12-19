@@ -3,10 +3,10 @@
 angular.module('jollyVentasApp.venta.controllers', [])
 
 .controller('VentaController',
-    ['$scope', '$rootScope', '$location', 'AuthenticationService', 'VentaService', 'StorageService', 
-    function ($scope, $rootScope, $location, AuthenticationService,  VentaService, StorageService) {
+    ['$scope', '$rootScope', '$location', 'usuarioService', 'VentaService', 'storageService', 'tiendaService', 
+    function ($scope, $rootScope, $location, AuthenticationService,  VentaService, StorageService, tiendaService) {
 
-        var producto_disponible = JSON.parse(StorageService.obtenerVariableLocalStorage('productos'));
+        var producto_disponible = JSON.parse(StorageService.obtenerVariableLocalStorage('tienda')).info.productos;
 
             var producto_codigo = {
                                     "901" : {"nombre": "watermelon", "onzas": "9" },
@@ -180,17 +180,16 @@ angular.module('jollyVentasApp.venta.controllers', [])
                 }
             }
 
-            var punto_venta = JSON.parse(StorageService.obtenerVariableLocalStorage('puntoventa'));
-            var consecutivo = StorageService.obtenerVariableLocalStorage('consecutivo');
-            consecutivo++;
-            
-            StorageService.asignarVariableLocalStorage("consecutivo", consecutivo);
-            
+            var punto_venta = JSON.parse(StorageService.obtenerVariableLocalStorage('tienda'));
+                        
             var acumulado_caja = StorageService.obtenerVariableLocalStorage('acumulado_caja');
-            var nuevo_acumulado = parseInt(acumulado_caja) + parseInt(total);
+            var nuevo_acumulado = parseInt(total);
+            if(acumulado_caja){
+                nuevo_acumulado = nuevo_acumulado + parseInt(acumulado_caja);
+            }            
             StorageService.asignarVariableLocalStorage("acumulado_caja", nuevo_acumulado);
 
-            VentaService.crearVenta(punto_venta.id, punto_venta.idempleado, productos, total, consecutivo);
+            VentaService.crearVenta(punto_venta.id, punto_venta.idempleado, productos, total, tiendaService.getSiguienteConsecutivo());
             
             $rootScope.total = 0;
             $scope.cantidad = {"9": {'watermelon' : "0",

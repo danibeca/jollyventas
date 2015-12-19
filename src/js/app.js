@@ -1,13 +1,14 @@
 'use strict';
 
 angular.module('jollyVentasApp', [
-  'ngRoute',
-  'ngCookies',
+  'ngRoute',  
   'mobile-angular-ui',
 
-  'generalModule',
-  'loginModule',
-  'jollyVentasApp.tienda',
+  'app.general',
+  'app.usuario',
+  'app.tienda',
+  'app.caja',
+  'app.almacen',
   'compraModule',
   'ventaModule',  
 ])
@@ -19,23 +20,29 @@ angular.module('jollyVentasApp', [
             reloadOnSearch: false
         })
         .when('/login', {
-            controller: 'LoginController',
+            controller: 'Login',
+            controllerAs: 'vm',
             templateUrl: 'login/login.html',
             reloadOnSearch: false
         })
         .when('/tienda-seleccionar', {
-            controller: 'Tiendas',
-            templateUrl: 'tienda/seleccionar.html',
+            controller: 'TiendaSeleccion',
             controllerAs: 'vm',
+            templateUrl: 'tienda/seleccionar.html',            
             reloadOnSearch: false,
             resolve: {
                 tiendaPrepService: tiendaPrepService
             }
         })
         .when('/tienda-abrir', {
-            controller: 'TiendaAbrirController',
+            controller: 'TiendaApertura',
+            controllerAs: 'vm',
             templateUrl: 'tienda/abrir.html',
-            reloadOnSearch: false
+            reloadOnSearch: false,
+            resolve: {
+                cajaPrepService: cajaPrepService,
+                almacenPrepService: almacenPrepService,
+            }
         })
         .when('/tienda-cerrar', {
             controller: 'TiendaCerrarController',
@@ -50,37 +57,52 @@ angular.module('jollyVentasApp', [
         .when('/solicitud', {
             controller: 'CompraSolicitudController',
             templateUrl: 'solicitud/solicitud.html',
-            reloadOnSearch: false
+            reloadOnSearch: false,
         })
         .otherwise({ redirectTo: '/login' });        
 }])
-.run(['$rootScope', '$location', '$cookieStore', '$http', 'StorageService',
-    function ($rootScope, $location, $cookieStore, $http, StorageService) {
-        $rootScope.globals = $cookieStore.get('user') || {};        
+.run(['$rootScope', '$location', '$http', 'usuarioService', 'tiendaService', 'storageService',
+    function ($rootScope, $location, $http, usuarioService, tiendaService, storageService) {
         
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
-            $rootScope.showSideBar = true;
+            $rootScope.showSideBar = false;
             
-            var user = JSON.parse(StorageService.obtenerVariableLocalStorage('user'));
-            if ($location.path() !== '/login' && !user) {
+            var usuario = usuarioService.getUsuarioActivo();
+            if ($location.path() !== '/login' && !usuario ) {
+                storageService.clear();
                 $location.path('/login');
             }
-
-            var tienda = JSON.parse(StorageService.obtenerVariableLocalStorage('tienda'));
-            if (!tienda || !tienda.abierto){
-                $rootScope.showSideBar = false;
-            }
-
-            // TODO: Evitar que llegue por navegador a las rutas 
-            // - /login
-            // - /tienda-seleccionar
-            // - /tienda-abrir
             
+            $rootScope.usuarioNombre =  usuario.persona.nombre;                
+            
+            var tienda =  tiendaService.getTiendaActiva();  
+            if (tienda){
+                $rootScope.tiendaNombre = tienda.nombre; 
+                if(tienda.info.abierto){
+                    $rootScope.showSideBar = true;
+                }
+            }
         });
     }]);
 
 /* @ngInject */
 function tiendaPrepService(tiendaService) {
-    return tiendaService.getList();
+    return tiendaService.getTiendas();
+}
+
+/* @ngInject */
+function cajaPrepService(cajaService, usuarioService, tiendaService) {
+    return cajaService.getCaja(
+            usuarioService.getUsuarioActivo().token,
+            tiendaService.getTiendaActiva().id
+    );
+}
+
+/* @ngInject */
+function almacenPrepService(almacenService, usuarioService, tiendaService) {
+    return almacenService.getAlmacen(
+            usuarioService.getUsuarioActivo().token,
+            tiendaService.getTiendaActiva().id
+    );
 }
 

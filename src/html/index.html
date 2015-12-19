@@ -13,7 +13,7 @@
     <!-- inject:js -->
     <script src="js/app.min.js"></script>
   </head>
-  <body ng-app="jollyVentasApp" ng-controller="MainController">
+  <body ng-app="jollyVentasApp">
 
          <!-- Sidebars -->
     <div ng-include="'general/sidebar.html'" 
@@ -30,8 +30,8 @@
         <div class="navbar-brand navbar-brand-center" ui-yield-to="title"></div>
 
         <div class="float-right sesion-info">
-            <span class="sesion-empleado">{{ user.persona.nombre }} </span>
-            <span class="sesion-tienda">{{ tienda.nombre }} </span>
+            <span class="sesion-empleado">{{ usuarioNombre }} </span>
+            <span class="sesion-tienda">{{ tiendaNombre }} </span>
         </div>
           
         <div class="btn-group pull-left" ng-if="showSideBar">
