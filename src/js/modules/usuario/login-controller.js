@@ -8,7 +8,7 @@
 
     ////////////////////////////////////////////////////////////////////////////////
     /* @ngInject */
-    function Login($rootScope, $location, usuarioService) {            
+    function Login($rootScope, locationService, usuarioService) {            
         var vm = this;
         
         vm.dataLoading = false;
@@ -24,7 +24,7 @@
                 if(data.valido) {
                     $rootScope.usuarioNombre = data.persona.nombre ;
                     usuarioService.setUsuarioActivo(data);
-                    $location.path('/tienda-seleccionar');                
+                    locationService.updateCurrentLocation('/tienda-seleccionar');                
                 } else {
                     vm.error = data.message;                    
                 }

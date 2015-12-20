@@ -4,10 +4,10 @@
         .module('app.tienda')
 
         .controller('TiendaCerrarController',
-            ['$scope', '$rootScope', '$location', 'TiendaService', 'storageService', 'almacenService',
-            function ($scope, $rootScope, $location, TiendaService, StorageService, almacenService) {
+            ['$scope', '$rootScope', 'sessionService', 'locationService', 'TiendaService', 'storageService', 'almacenService',
+            function ($scope, $rootScope, sessionService locationService, TiendaService, StorageService, almacenService) {
 
-                $rootScope.vistaPie = "tienda/pie-cerrar.html";
+                sessionService.setVariable("vistaPie", "tienda/pie-cerrar.html");                
 
                 $scope.caja_final = '';
                 $scope.cierre_nota = '';
@@ -54,7 +54,9 @@
                     StorageService.asignarVariableLocalStorage("inventario_final", JSON.stringify(productos));
 
                     TiendaService.cerrarTienda(punto_venta.id, punto_venta.idempleado, caja_id, $scope.caja_final, productos, $scope.cierre_nota, function(response){
-                        //$location.path('/login');
+                    
+                    locationService.updateCurrentLocation('/login');
+
                     });
                 };
 

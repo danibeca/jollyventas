@@ -15,15 +15,15 @@ angular.module('jollyVentasApp', [
 
 .config(['$routeProvider', function ($routeProvider) {
   $routeProvider
-        .when('/', {
-            redirectTo: '/venta',
-            reloadOnSearch: false
-        })
         .when('/login', {
             controller: 'Login',
             controllerAs: 'vm',
             templateUrl: 'login/login.html',
-            reloadOnSearch: false
+            reloadOnSearch: false,
+            resolve: {
+                clearStorageService: clearStorageService,
+                clearSessionService: clearSessionService
+            }
         })
         .when('/tienda-seleccionar', {
             controller: 'TiendaSeleccion',
@@ -61,29 +61,27 @@ angular.module('jollyVentasApp', [
         })
         .otherwise({ redirectTo: '/login' });        
 }])
-.run(['$rootScope', '$location', '$http', 'usuarioService', 'tiendaService', 'storageService',
-    function ($rootScope, $location, $http, usuarioService, tiendaService, storageService) {
+.run(['$rootScope', '$http', 'locationService', 'usuarioService', 'tiendaService', 'storageService',
+    function ($rootScope, $http, locationService, usuarioService, tiendaService, storageService) {
         
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
-            $rootScope.showSideBar = false;
-            
-            var usuario = usuarioService.getUsuarioActivo();
-            if ($location.path() !== '/login' && !usuario ) {
-                storageService.clear();
-                $location.path('/login');
-            }
-            
-            $rootScope.usuarioNombre =  usuario.persona.nombre;                
-            
-            var tienda =  tiendaService.getTiendaActiva();  
-            if (tienda){
-                $rootScope.tiendaNombre = tienda.nombre; 
-                if(tienda.info.abierto){
-                    $rootScope.showSideBar = true;
-                }
-            }
+            locationService.verifyLocation();
+            usuarioService.updateSession();
+            tiendaService.updateSession();            
         });
-    }]);
+    }
+]);
+
+/* @ngInject */
+function clearStorageService(storageService) {
+    return storageService.clear();
+}
+
+/* @ngInject */
+function clearSessionService(sessionService) {
+    return sessionService.clear();
+}
+
 
 /* @ngInject */
 function tiendaPrepService(tiendaService) {

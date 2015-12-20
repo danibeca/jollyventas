@@ -6,13 +6,14 @@
         .factory('usuarioService', usuarioService);
 
     /* @ngInject */
-    function usuarioService($http, storageService , mockService) {        
+    function usuarioService($http, sessionService, storageService , mockService) {        
         var usuarioActivo;
 
         var service = {
             getLogin: getLogin,
             setUsuarioActivo: setUsuarioActivo,              
-            getUsuarioActivo: getUsuarioActivo,              
+            getUsuarioActivo: getUsuarioActivo,
+            updateSession: updateSession,              
         };
         return service;
 
@@ -41,12 +42,21 @@
             storageService.setJsonObject('usuario', data);
         }
 
-         function getUsuarioActivo() {
+        function getUsuarioActivo() {
              if(!usuarioActivo){
                 usuarioActivo = storageService.getJsonObject('usuario');
              }
              return usuarioActivo;  
-        }  
+        }
+
+        function updateSession() {
+            var usuario = getUsuarioActivo();
+            if (usuario) {
+                sessionService.setVariable("usuarioNombre", usuario.persona.nombre);                 
+            }
+        }
+
+
     }
 })();
 

@@ -6,7 +6,7 @@
         .factory('tiendaService', tiendaService);
 
     /* @ngInject */
-    function tiendaService($http, mockService, storageService) {  
+    function tiendaService($http, sessionService, mockService, storageService) {  
         var tiendaActiva;
         var consecutivo;
 
@@ -18,6 +18,7 @@
             setConsecutivo: setConsecutivo,
             getConsecutivo: getConsecutivo,           
             getSiguienteConsecutivo: getSiguienteConsecutivo,
+            updateSession: updateSession,
         };
         return service;
           
@@ -85,6 +86,17 @@
             var nuevoConsecutivo = consecutivo + 1;
             setConsecutivo(nuevoConsecutivo);
             return nuevoConsecutivo;
+        }
+
+        function updateSession() {
+            sessionService.setVariable("showSideBar", false);
+            var tienda =  getTiendaActiva();  
+            if (tienda){
+                sessionService.setVariable("tiendaNombre", tienda.nombre);                
+                if(tienda.info && tienda.info.abierto){
+                    sessionService.setVariable("showSideBar", true);
+                }
+            }
         }
 
     }

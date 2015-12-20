@@ -7,17 +7,20 @@
 
 
     /* @ngInject */
-    function Apertura($rootScope, $location, cajaPrepService, almacenPrepService, cajaService, almacenService, usuarioService, tiendaService) {
+    function Apertura($rootScope, sessionService, locationService, cajaPrepService, almacenPrepService, cajaService, almacenService, usuarioService, tiendaService) {
 
         var vm = this;
         vm.caja = cajaPrepService.caja;
         vm.caja.dineroreal = vm.caja.dineroactual;
         vm.almacen = almacenPrepService.almacen;        
 
-        $rootScope.vistaPie = "tienda/pie-abrir.html";
         $rootScope.abrirTienda = abrirTienda;
         $rootScope.limpiarTienda = limpiarTienda;
         
+        sessionService.setVariable("vistaPie", "tienda/pie-abrir.html");
+
+        ////////////////////////////////////////////////////////////////////////////////
+
         function abrirTienda() {
             actualizarInformacion();
             
@@ -33,7 +36,7 @@
                 tienda.info = data;
                 tiendaService.setTiendaActiva(tienda);
                 tiendaService.setConsecutivo(tienda.info.facturacion.actual);
-                $location.path('/venta');                
+                locationService.updateCurrentLocation('/venta');               
             }
 
             function actualizarInformacion(){

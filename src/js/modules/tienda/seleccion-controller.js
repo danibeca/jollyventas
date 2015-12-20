@@ -7,7 +7,7 @@
 
     ////////////////////////////////////////////////////////////////////////////////
     /* @ngInject */
-    function Seleccion($rootScope, $location, tiendaPrepService, tiendaService) {
+    function Seleccion($rootScope, locationService, tiendaPrepService, tiendaService) {
 
         var vm = this;
         vm.tiendas = tiendaPrepService.puntosdeventa;
@@ -16,7 +16,7 @@
         function seleccionar(tienda) {
             $rootScope.tiendaNombre = tienda.nombre;
             tiendaService.setTiendaActiva(tienda);              
-            $location.path('/tienda-abrir');            
+            locationService.updateCurrentLocation('/tienda-abrir');            
         }
     }
 })();
