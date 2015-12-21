@@ -5,7 +5,7 @@
 
         .controller('TiendaCerrarController',
             ['$scope', '$rootScope', 'sessionService', 'locationService', 'TiendaService', 'storageService', 'almacenService',
-            function ($scope, $rootScope, sessionService locationService, TiendaService, StorageService, almacenService) {
+            function ($scope, $rootScope, sessionService, locationService, TiendaService, StorageService, almacenService) {
 
                 sessionService.setVariable("vistaPie", "tienda/pie-cerrar.html");                
 
