@@ -36,7 +36,7 @@
                 tienda.info = data;
                 tiendaService.setTiendaActiva(tienda);
                 tiendaService.setConsecutivo(tienda.info.facturacion.actual);
-                locationService.updateCurrentLocation('/venta');               
+                locationService.updateCurrentLocation('/venta');
             }
 
             function actualizarInformacion(){
@@ -45,11 +45,11 @@
 
                 angular.forEach(vm.almacen.articulos, function(articulo, i) {
                     articulo.cantidad =  articulo.cantidadactual;
+                    articulo.cantidadfinal = '';
                     delete articulo.cantidadactual;                   
                 });
-
                 cajaService.setCajaActual(vm.caja);
-                almacenService.setAlmacenActual(vm.almacen);                 
+                almacenService.setAlmacenActual(vm.almacen);
             }
         }
 

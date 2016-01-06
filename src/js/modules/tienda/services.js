@@ -13,6 +13,7 @@
         var service = {
             getTiendas: getTiendas,  
             abrirTienda: abrirTienda,
+            cerrarTienda: cerrarTienda,
             setTiendaActiva: setTiendaActiva,
             getTiendaActiva: getTiendaActiva,
             setConsecutivo: setConsecutivo,
@@ -41,7 +42,7 @@
 
         function abrirTienda(user, tienda, caja, articulos) {        
             return mockService.abrirTienda()             
-          //return $http.get('server/tienda/abrir/', getRequestJson)
+            //return $http.get('server/tienda/abrir/', getRequestJson)
                 .then(abrirTiendaComplete)
                 .catch(abrirTiendaFailed);
 
@@ -52,18 +53,67 @@
             function abrirTiendaFailed(error) {
                 console.log('abrirTiendaFailed XHR Failed for' + error.data);                
             }
+
             function getRequestJson() {
                 return  '{}';           
             }
         }
 
+        function cerrarTienda(user, tienda, caja, articluos, observaciones){
+            
+            console.log('cerrando 2');
+
+            console.log(user);
+            console.log(tienda);
+            console.log(caja);
+            console.log(articluos);
+            console.log(observaciones);
+            
+            return;
+            
+            /*
+            return mockService.cerrarTienda()
+            //return $http.post('server/tienda/cerrar/', getRequestJson)
+                .then(cerrarTiendaComplete)
+                .catch(cerrarTiendaFailed);
+
+            function cerrarTiendaComplete(data, status, headers, config) {               
+                return data;
+            }
+
+            function cerrarTiendaFailed(error) {
+                console.log('cerrarTiendaFailed XHR Failed for' + error.data);                
+            }
+
+            function getRequestJson(user, tienda, caja, articluos, observaciones) {
+                var cierre = {
+                            "auth": {
+                                "token": "AOQWEIPQEW9120"
+                              },
+                              "puntodeventa": {
+                                "id": punto_venta_id
+                              },
+                              "empleado": {
+                                "id": empleado_id
+                              },
+                              "caja": {
+                                "id": caja_id,
+                                "dinero": caja_actual
+                              },
+                              "articulos": productos,
+                              "observaciones": cierre_nota
+                            };
+                return  '{}';           
+            }
+            */
+        }
 
         function setTiendaActiva(data) {
             tiendaActiva = data;
             storageService.setJsonObject('tienda', data);
         }
 
-         function getTiendaActiva() {
+        function getTiendaActiva() {
              if(!tiendaActiva){
                 tiendaActiva = storageService.getJsonObject('tienda');
              }

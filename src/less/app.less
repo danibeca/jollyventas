@@ -4,7 +4,7 @@
 @import "variables.less";
 
 // ================
-// HTNL Elements
+// HTML Elements
 
 ul{
     list-style-type: none;
@@ -35,6 +35,10 @@ input[type="number"] {
 
 .app {
     .gradient(linear; @gradColor1, @gradColor2);
+}
+
+.sidebar-left{
+    background-color: @bgDefault;
 }
 
 .has-navbar-top .app-body {
@@ -89,6 +93,15 @@ input[type="number"] {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+}
+
+.tabla-app th {
+    vertical-align: middle;    
+    border: none;
+    background-color: @bgDefault;
+    color: #fff;
+    font-size: 20px;
+    padding: 20px;
 }
 
 .tabla-app > tbody > tr >td {

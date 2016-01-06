@@ -13,7 +13,7 @@
         var service = {
             getCaja: getCaja,
             setCajaActual: setCajaActual, 
-            getCajaActual: setCajaActual,  
+            getCajaActual: getCajaActual,  
         };
         return service;
           
@@ -44,10 +44,11 @@
         }
 
         function getCajaActual() {
-             if(!cajaActual){
-                cajaActual = storageService.getJsonObject('caja');
-             }
-             return cajaActual;  
+           
+            if(!cajaActual){
+               cajaActual = storageService.getJsonObject('caja');
+            }
+            return cajaActual;  
         }
           
     }

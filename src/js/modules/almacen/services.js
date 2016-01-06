@@ -13,7 +13,7 @@
         var service = {
             getAlmacen: getAlmacen,
             setAlmacenActual: setAlmacenActual, 
-            getAlmacenActual: setAlmacenActual,  
+            getAlmacenActual: getAlmacenActual
         };
         return service;
           
@@ -44,10 +44,10 @@
         }
 
         function getAlmacenActual() {
-             if(!almacenActual){
+            if(!almacenActual){
                 almacenActual = storageService.getJsonObject('almacen');
-             }
-             return almacenActual;  
+            }
+            return almacenActual;  
         }         
     }
 })();

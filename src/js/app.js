@@ -41,10 +41,18 @@ angular.module('jollyVentasApp', [
             reloadOnSearch: false,
             resolve: {
                 cajaPrepService: cajaPrepService,
-                almacenPrepService: almacenPrepService,
+                almacenPrepService: almacenPrepService
             }
         })
         .when('/tienda-cerrar', {
+            controller: 'TiendaCierre',
+            controllerAs: 'vm',
+            templateUrl: 'tienda/cerrar.html',
+            reloadOnSearch: false,
+            resolve: {
+            }
+        })
+        .when('/tienda-cerrarold', {
             controller: 'TiendaCerrarController',
             templateUrl: 'tienda/cerrar.html',
             reloadOnSearch: false
@@ -81,7 +89,6 @@ function clearStorageService(storageService) {
 function clearSessionService(sessionService) {
     return sessionService.clear();
 }
-
 
 /* @ngInject */
 function tiendaPrepService(tiendaService) {

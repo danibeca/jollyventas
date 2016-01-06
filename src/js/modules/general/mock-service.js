@@ -15,6 +15,7 @@
             getCaja: getCaja,
             getAlmacen: getAlmacen,            
             abrirTienda: abrirTienda,
+            cerrarTienda: cerrarTienda
         };
         return service;
 
@@ -211,6 +212,8 @@
             return deferred.promise;
         }
 
-
+        function cerrarTienda(){
+            return true;
+        }
     }
 })();

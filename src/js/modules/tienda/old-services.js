@@ -26,7 +26,6 @@ angular
                               "articulos": productos,
                               "observaciones": cierre_nota
                             };
-            console.log('cerrand');
             console.log(cierre);
             StorageService.asignarVariableLocalStorage("acumulado_caja", 0);
             
