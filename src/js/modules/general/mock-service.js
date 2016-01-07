@@ -183,17 +183,54 @@
                       },
                       "productos": [
                         {
-                          "id": 928,
+                          "id": 901,
+                          "nombre": "9 Onz Watermelon"
+                        },
+                        {
+                          "id": 902,
+                          "nombre": "12 Onz Watermelon"
+                        },
+                        {
+                          "id": 903,
+                          "nombre": "9 Onz Apple"
+                        },
+                        {
+                          "id": 904,
+                          "nombre": "12 Onz Apple"
+                        },
+                        {
+                          "id": 905,
+                          "nombre": "9 Onz Blue"
+                        },
+                        {
+                          "id": 906,
+                          "nombre": "12 Onz Blue"
+                        },
+                        {
+                          "id": 907,
                           "nombre": "9 Onz Cherry"
                         },
                         {
-                          "id": 929,
+                          "id": 908,
                           "nombre": "12 Onz Cherry"
                         },
                         {
+                          "id": 909,
+                          "nombre": "9 Onz Hersheys"
+                        },
+                        {
+                          "id": 928,
+                          "nombre": "12 Onz Hersheys"
+                        },
+                        {
+                          "id": 929,
+                          "nombre": "9 Onz Grape"
+                        },
+                        {
                           "id": 930,
-                          "nombre": "9 Onz Apple"
+                          "nombre": "12 Onz Grape"
                         }
+                        
                       ],
                       "pedidos": [
                         {
@@ -213,7 +250,14 @@
         }
 
         function cerrarTienda(){
-            return true;
+            
+            var response = {};
+
+            var deferred = $q.defer();
+            setTimeout(function() {                
+                deferred.resolve(response);                                 
+            }, 1000);
+            return deferred.promise;
         }
     }
 })();

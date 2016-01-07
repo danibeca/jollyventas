@@ -32,6 +32,7 @@
             function getLoginFailed(error) {
                 console.log('getLoginFailed XHR Failed for' + error.data);                
             }
+
             function getRequestJson() {
                 return  '{}';           
             }
@@ -43,10 +44,10 @@
         }
 
         function getUsuarioActivo() {
-             if(!usuarioActivo){
+            if(!usuarioActivo){
                 usuarioActivo = storageService.getJsonObject('usuario');
-             }
-             return usuarioActivo;  
+            }
+            return usuarioActivo;  
         }
 
         function updateSession() {

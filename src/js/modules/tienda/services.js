@@ -60,18 +60,7 @@
         }
 
         function cerrarTienda(user, tienda, caja, articluos, observaciones){
-            
-            console.log('cerrando 2');
 
-            console.log(user);
-            console.log(tienda);
-            console.log(caja);
-            console.log(articluos);
-            console.log(observaciones);
-            
-            return;
-            
-            /*
             return mockService.cerrarTienda()
             //return $http.post('server/tienda/cerrar/', getRequestJson)
                 .then(cerrarTiendaComplete)
@@ -86,26 +75,8 @@
             }
 
             function getRequestJson(user, tienda, caja, articluos, observaciones) {
-                var cierre = {
-                            "auth": {
-                                "token": "AOQWEIPQEW9120"
-                              },
-                              "puntodeventa": {
-                                "id": punto_venta_id
-                              },
-                              "empleado": {
-                                "id": empleado_id
-                              },
-                              "caja": {
-                                "id": caja_id,
-                                "dinero": caja_actual
-                              },
-                              "articulos": productos,
-                              "observaciones": cierre_nota
-                            };
-                return  '{}';           
+                return '{}';
             }
-            */
         }
 
         function setTiendaActiva(data) {

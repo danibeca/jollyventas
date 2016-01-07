@@ -1,6 +1,4 @@
 <section class="section container-fluid">
-
-    
     <div class="row" ng-repeat="fila in ['1', '2']">
         <div class="col-md-4 venta-articulo" ng-repeat="articulo in articulos[fila]">
             <div class="row">
@@ -18,7 +16,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <input class="articulo-cantidad js_cantidad" data-articulo="{{ articulo }}" data-onzas="9" ng-model="cantidad['9'][articulo]">
+                                    <input class="articulo-cantidad js_cantidad" data-articulo="{{ articulo }}" data-onzas="9" ng-model="cantidad['9'][articulo]" disabled>
                                 </td>
                                 <td>
                                     <button class="btn btn-default" type="button" ng-click="articulo_remover(articulo, '9');">-</button>
