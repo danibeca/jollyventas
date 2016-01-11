@@ -9,8 +9,9 @@ angular.module('jollyVentasApp', [
   'app.tienda',
   'app.caja',
   'app.almacen',
-  'compraModule',
-  'ventaModule',  
+  'app.venta'
+  //'compraModule',
+  //'ventaModule',  
 ])
 
 .config(['$routeProvider', function ($routeProvider) {
@@ -48,24 +49,13 @@ angular.module('jollyVentasApp', [
             controller: 'TiendaCierre',
             controllerAs: 'vm',
             templateUrl: 'tienda/cerrar.html',
-            reloadOnSearch: false,
-            resolve: {
-            }
-        })
-        .when('/tienda-cerrarold', {
-            controller: 'TiendaCerrarController',
-            templateUrl: 'tienda/cerrar.html',
             reloadOnSearch: false
         })
         .when('/venta', {
-            controller: 'VentaController',
+            controller: 'Venta',
+            controllerAs: 'vm',
             templateUrl: 'venta/venta.html',
             reloadOnSearch: false
-        })
-        .when('/solicitud', {
-            controller: 'CompraSolicitudController',
-            templateUrl: 'solicitud/solicitud.html',
-            reloadOnSearch: false,
         })
         .otherwise({ redirectTo: '/login' });        
 }])
@@ -109,5 +99,15 @@ function almacenPrepService(almacenService, usuarioService, tiendaService) {
             usuarioService.getUsuarioActivo().token,
             tiendaService.getTiendaActiva().id
     );
+}
+
+/* @ngInject */
+function pedidoPrepService(pedidoService, usuarioService, tiendaService) {
+    /*
+    return almacenService.getAlmacen(
+            usuarioService.getUsuarioActivo().token,
+            tiendaService.getTiendaActiva().id
+    );
+    */
 }
 

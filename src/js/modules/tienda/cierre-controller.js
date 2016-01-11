@@ -5,6 +5,7 @@
         .module('app.tienda')
         .controller('TiendaCierre', Cierre);
 
+
     /* @ngInject */
     function Cierre($rootScope, $scope, sessionService, locationService, cajaService, almacenService, usuarioService, tiendaService) {
 

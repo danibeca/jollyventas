@@ -36,6 +36,7 @@
                 tienda.info = data;
                 tiendaService.setTiendaActiva(tienda);
                 tiendaService.setConsecutivo(tienda.info.facturacion.actual);
+                tiendaService.setProductos(tienda.info.productos);
                 locationService.updateCurrentLocation('/venta');
             }
 

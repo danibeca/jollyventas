@@ -1,41 +1,29 @@
 <section class="section container-fluid">
-    <div class="row" ng-repeat="fila in ['1', '2']">
-        <div class="col-md-4 venta-articulo" ng-repeat="articulo in articulos[fila]">
+    
+    <div class="row articulo-fila" ng-repeat="sabor in vm.sabores" ng-if="$index % 3 == 0">
+        <div class="col-lg-4 col-sm-4" 
+            ng-repeat="i in [$index, $index + 1, $index + 2]" 
+            ng-if="vm.sabores[i] != null">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="articulo-imagen articulo-imagen-{{ articulo }}"></div>
+                    <div class="articulo-imagen articulo-imagen-{{ vm.sabores[i].nombre }}"></div>
                 </div>
-                <div class="col-md-6">
-                    <div class="row seleccion-cantidad">
-                        <table class="tabla-app" ng-if="showArticulo['9'][articulo]">
+                <div class="col-md-6" ng-init="tamanos=['nueve', 'doce']">
+                    <div class="row seleccion-cantidad" ng-repeat="tamano in tamanos">
+                        <table class="tabla-app">
                             <tr>
                                 <td>
                                     <div>
-                                        <input type="button" class="agregar agregar-11 agregar-11-{{ articulo }}" ng-click="articulo_agregar(articulo, '9');">
-                                        <span class="tamano">9 Oz</span>
+                                        <input type="button" ng-click="vm.articuloAgregar(i, tamano)" class="agregar agregar-{{ tamano }} agregar-{{ tamano }}-{{ vm.sabores[i].nombre }}">
+                                        <span class="tamano" ng-if="tamano == 'nueve'">9 Oz</span>
+                                        <span class="tamano" ng-if="tamano == 'doce'">12 Oz</span>
                                     </div>
                                 </td>
                                 <td>
-                                    <input class="articulo-cantidad js_cantidad" data-articulo="{{ articulo }}" data-onzas="9" ng-model="cantidad['9'][articulo]" disabled>
+                                    <input class="articulo-cantidad" ng-model="vm.sabores[i].prod[tamano].cantidad" disabled>
                                 </td>
                                 <td>
-                                    <button class="btn btn-default" type="button" ng-click="articulo_remover(articulo, '9');">-</button>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="row seleccion-cantidad">
-                        <table class="tabla-app" ng-if="showArticulo['12'][articulo]">
-                            <tr>
-                                <td>
-                                    <input type="button" class="agregar agregar-16 agregar-16-{{ articulo }}" ng-click="articulo_agregar(articulo, '12');">
-                                    <span class="tamano">12 Oz</span>
-                                </td>
-                                <td>
-                                    <input class="articulo-cantidad js_cantidad" data-articulo="{{ articulo }}" data-onzas="12" ng-model="cantidad['12'][articulo]">
-                                </td>
-                                <td>
-                                    <button class="btn btn-default" type="button" ng-click="articulo_remover(articulo, '12');">-</button>
+                                    <button class="btn btn-default" type="button" ng-click="vm.articuloRemover(i, tamano);">-</button>
                                 </td>
                             </tr>
                         </table>
@@ -43,7 +31,5 @@
                 </div>
             </div>
         </div>
-        <br>
     </div>
-
 </section>

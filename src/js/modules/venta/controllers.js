@@ -6,8 +6,16 @@ angular.module('jollyVentasApp.venta.controllers', [])
     ['$scope', '$rootScope', '$location', 'usuarioService', 'VentaService', 'storageService', 'tiendaService', 
     function ($scope, $rootScope, $location, AuthenticationService,  VentaService, StorageService, tiendaService) {
 
-        var producto_disponible = JSON.parse(StorageService.obtenerVariableLocalStorage('tienda')).info.productos;
+    
+    
+        $scope.alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 
+                            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
+
+        var producto_disponible = JSON.parse(StorageService.obtenerVariableLocalStorage('tienda')).info.productos;
+        
+        
+        
             var producto_codigo = {
                                     "901" : {"nombre": "watermelon", "onzas": "9" },
                                     "902" : {"nombre": "watermelon", "onzas": "12" },

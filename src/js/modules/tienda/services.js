@@ -7,8 +7,9 @@
 
     /* @ngInject */
     function tiendaService($http, sessionService, mockService, storageService) {  
-        var tiendaActiva;
-        var consecutivo;
+        var tiendaActiva
+            , productos
+            , consecutivo;
 
         var service = {
             getTiendas: getTiendas,  
@@ -18,6 +19,8 @@
             getTiendaActiva: getTiendaActiva,
             setConsecutivo: setConsecutivo,
             getConsecutivo: getConsecutivo,           
+            setProductos: setProductos,
+            getProductos: getProductos,
             getSiguienteConsecutivo: getSiguienteConsecutivo,
             updateSession: updateSession,
         };
@@ -101,6 +104,17 @@
                 consecutivo = parseInt(storageService.getJsonObject('consecutivo'));
              }
              return consecutivo;  
+        }
+
+        function setProductos(productos) {
+            storageService.setJsonObject('tiendaProductos', productos);
+        }
+
+        function getProductos() {
+            if(!productos){
+                productos = storageService.getJsonObject('tiendaProductos');
+            }
+             return productos;
         }
         
         function getSiguienteConsecutivo () {
