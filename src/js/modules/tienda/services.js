@@ -17,6 +17,7 @@
             cerrarTienda: cerrarTienda,
             setTiendaActiva: setTiendaActiva,
             getTiendaActiva: getTiendaActiva,
+            cleanTiendaActiva: cleanTiendaActiva,
             setConsecutivo: setConsecutivo,
             getConsecutivo: getConsecutivo,           
             setProductos: setProductos,
@@ -80,6 +81,10 @@
             function getRequestJson(user, tienda, caja, articluos, observaciones) {
                 return '{}';
             }
+        }
+
+        function cleanTiendaActiva() {
+            storageService.cleanObject('tienda');
         }
 
         function setTiendaActiva(data) {

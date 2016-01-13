@@ -12,7 +12,7 @@
         var service = {
             clear: clear,
             setVariable:setVariable,
-            removeVariable:removeVariable,
+            removeVariable:removeVariable
         };
 
         return service;
@@ -23,7 +23,6 @@
             angular.forEach(variables, function(variable, key) {
                 removeVariable(key);               
             });
-           
         }
 
         function setVariable(key, value){

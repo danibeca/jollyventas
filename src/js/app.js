@@ -9,7 +9,8 @@ angular.module('jollyVentasApp', [
   'app.tienda',
   'app.caja',
   'app.almacen',
-  'app.venta'
+  'app.venta',
+  'app.devolucion'
   //'compraModule',
   //'ventaModule',  
 ])
@@ -57,6 +58,12 @@ angular.module('jollyVentasApp', [
             templateUrl: 'venta/venta.html',
             reloadOnSearch: false
         })
+        .when('/devolucion', {
+            controller: 'Devolucion',
+            controllerAs: 'vm',
+            templateUrl: 'devolucion/devolucion.html',
+            reloadOnSearch: false
+        })
         .otherwise({ redirectTo: '/login' });        
 }])
 .run(['$rootScope', '$http', 'locationService', 'usuarioService', 'tiendaService', 'storageService',
@@ -100,14 +107,3 @@ function almacenPrepService(almacenService, usuarioService, tiendaService) {
             tiendaService.getTiendaActiva().id
     );
 }
-
-/* @ngInject */
-function pedidoPrepService(pedidoService, usuarioService, tiendaService) {
-    /*
-    return almacenService.getAlmacen(
-            usuarioService.getUsuarioActivo().token,
-            tiendaService.getTiendaActiva().id
-    );
-    */
-}
-

@@ -15,6 +15,7 @@
             clear: clear,
             getJsonObject: getJsonObject,
             setJsonObject: setJsonObject,
+            cleanObject: cleanObject
         };
 
         return service;
@@ -43,6 +44,10 @@
 
         function setJsonObject(sNombreVariable, valor){
             localStorage.setItem(sNombreVariable, JSON.stringify(valor));
+        }
+
+        function cleanObject(sNombreVariable){
+            localStorage.removeItem(sNombreVariable);
         }
     }
 })();

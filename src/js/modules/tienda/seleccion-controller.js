@@ -7,15 +7,17 @@
 
     ////////////////////////////////////////////////////////////////////////////////
     /* @ngInject */
-    function Seleccion($rootScope, locationService, tiendaPrepService, tiendaService) {
+    function Seleccion($rootScope, locationService, tiendaPrepService, tiendaService, sessionService) {
 
         var vm = this;
         vm.tiendas = tiendaPrepService.puntosdeventa;
         vm.seleccionar = seleccionar;
+
+        sessionService.setVariable("vistaPie", "");
         
         function seleccionar(tienda) {
             $rootScope.tiendaNombre = tienda.nombre;
-            tiendaService.setTiendaActiva(tienda);              
+            tiendaService.setTiendaActiva(tienda);
             locationService.updateCurrentLocation('/tienda-abrir');            
         }
     }

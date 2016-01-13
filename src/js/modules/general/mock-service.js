@@ -183,67 +183,51 @@
                       },
                       "productos": [
                         {
-                          "id": 901,
-                          "nombre": "9 Onz Watermelon"
-                        },
-                        {
-                          "id": 902,
-                          "nombre": "12 Onz Watermelon"
-                        },
-                        {
-                          "id": 903,
-                          "nombre": "9 Onz Apple"
-                        },
-                        {
-                          "id": 904,
-                          "nombre": "12 Onz Apple"
-                        },
-                        {
-                          "id": 905,
-                          "nombre": "9 Onz Blue"
-                        },
-                        {
-                          "id": 906,
-                          "nombre": "12 Onz Blue"
-                        },
-                        {
-                          "id": 907,
+                          "id": 101,
                           "nombre": "9 Onz Cherry"
                         },
                         {
-                          "id": 908,
+                          "id": 102,
                           "nombre": "12 Onz Cherry"
                         },
                         {
-                          "id": 909,
-                          "nombre": "9 Onz Hersheys"
-                        },
-                        {
-                          "id": 928,
-                          "nombre": "12 Onz Hersheys"
-                        },
-                        {
-                          "id": 929,
-                          "nombre": "9 Onz Grape"
-                        },
-                        {
-                          "id": 930,
-                          "nombre": "12 Onz Grape"
-                        },
-                        {
-                          "id": 101,
-                          "nombre": "12 Onz Grape"
-                        },
-                        {
                           "id": 201,
-                          "nombre": "12 Onz Grape"
+                          "nombre": "9 Onz Apple"
+                        },
+                        {
+                          "id": 202,
+                          "nombre": "12 Onz Apple"
                         },
                         {
                           "id": 301,
-                          "nombre": "12 Onz Grape"
+                          "nombre": "9 Onz Hersheys"
+                        },
+                        {
+                          "id": 302,
+                          "nombre": "12 Onz Hersheys"
                         },
                         {
                           "id": 401,
+                          "nombre": "9 Onz Watermelon"
+                        },
+                        {
+                          "id": 402,
+                          "nombre": "12 Onz Watermelon"
+                        },
+                        {
+                          "id": 501,
+                          "nombre": "9 Onz Blue"
+                        },
+                        {
+                          "id": 502,
+                          "nombre": "12 Onz Blue"
+                        },
+                        {
+                          "id": 601,
+                          "nombre": "9 Onz Grape"
+                        },
+                        {
+                          "id": 602,
                           "nombre": "12 Onz Grape"
                         }
                         

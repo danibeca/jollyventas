@@ -12,9 +12,14 @@
         var vm = this;
         vm.vender = vender;
         vm.cerrar = cerrar;
+        vm.devolver = devolver;
 
         function vender() {
-            locationService.updateCurrentLocation('/venta');            
+            locationService.updateCurrentLocation('/venta');
+        }
+        
+        function devolver() {
+            locationService.updateCurrentLocation('/devolucion');
         }
 
         function cerrar() {            

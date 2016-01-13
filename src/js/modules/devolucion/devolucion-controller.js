@@ -2,14 +2,16 @@
     'use strict';
 
     angular
-        .module('app.venta')
-        .controller('Venta', Venta);
+        .module('app.devolucion')
+        .controller('Devolucion', Devolucion);
 
     /* @ngInject */
-    function Venta($rootScope, sessionService, locationService, almacenService, usuarioService, tiendaService) {
+    function Devolucion($rootScope, sessionService, locationService, almacenService, usuarioService, tiendaService) {
 
         var vm = this;
         vm.productos = tiendaService.getProductos();
+        vm.devolucion_nota = '';
+        
         iniciarProductos();
 
         vm.articuloAgregar = articuloAgregar;
@@ -19,7 +21,7 @@
         $rootScope.crearVenta = crearVenta;
         $rootScope.limpiarVenta = limpiarVenta;
 
-        sessionService.setVariable("vistaPie", "venta/pie-venta.html");
+        sessionService.setVariable("vistaPie", "devolucion/pie-devolucion.html");
 
 
         ////////////////////////////////////////////////////////////////////////////////
@@ -125,17 +127,21 @@
                 alert('No hay articulo agregados');
             }
             else {
-                alert('Venta creada correctamente');
+                alert('Devolución guardada correctamente');
                 limpiarVenta();
             }
         }
 
         function limpiarVenta(){
+            
+            locationService.updateCurrentLocation('/venta');
+            /*
             angular.forEach(vm.sabores, function(sabor, i) {
                 sabor.prod.nueve.cantidad = 0;
                 sabor.prod.doce.cantidad = 0;
             });
             $rootScope.total = 0;
+            */
         }
     }
 })();

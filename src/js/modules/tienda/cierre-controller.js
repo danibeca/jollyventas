@@ -40,11 +40,14 @@
         }
         
         function limpiarTienda(){
+            locationService.updateCurrentLocation('/venta');
+            /*
             vm.caja.dinerofinal = '';
             angular.forEach(vm.almacen.articulos, function(articulo, i) {
                 articulo.cantidadfinal = '';
             });
             vm.cierre_nota = '';
+            */
         }
     }
 })();

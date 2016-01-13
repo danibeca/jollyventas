@@ -55,10 +55,16 @@
         }
 
         function limpiarTienda(){
+            
+            tiendaService.cleanTiendaActiva();
+            tiendaService.updateSession();
+            locationService.updateCurrentLocation('/tienda-seleccionar');
+            /*
             vm.caja.dineroreal = vm.caja.dineroactual;
             angular.forEach(vm.almacen.articulos, function(articulo, i) {
                 articulo.cantidadactual = articulo.cantidad;
             });
+            */
         }
 
     }
