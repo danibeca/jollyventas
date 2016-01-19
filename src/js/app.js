@@ -24,7 +24,9 @@ angular.module('jollyVentasApp', [
             reloadOnSearch: false,
             resolve: {
                 clearStorageService: clearStorageService,
-                clearSessionService: clearSessionService
+                clearSessionService: clearSessionService,
+                clearUserService: clearUserService,
+                clearTiendaService: clearTiendaService
             }
         })
         .when('/tienda-seleccionar', {
@@ -86,6 +88,17 @@ function clearStorageService(storageService) {
 function clearSessionService(sessionService) {
     return sessionService.clear();
 }
+
+/* @ngInject */
+function clearUserService(usuarioService) {
+    usuarioService.clearUsuarioActivo();
+}
+
+/* @ngInject */
+function clearTiendaService(tiendaService) {
+    tiendaService.clearTiendaActiva();
+}
+
 
 /* @ngInject */
 function tiendaPrepService(tiendaService) {

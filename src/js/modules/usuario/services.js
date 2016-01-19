@@ -13,7 +13,8 @@
             getLogin: getLogin,
             setUsuarioActivo: setUsuarioActivo,              
             getUsuarioActivo: getUsuarioActivo,
-            updateSession: updateSession,              
+            updateSession: updateSession,
+            clearUsuarioActivo: clearUsuarioActivo
         };
         return service;
 
@@ -55,6 +56,10 @@
             if (usuario) {
                 sessionService.setVariable("usuarioNombre", usuario.persona.nombre);                 
             }
+        }
+
+        function clearUsuarioActivo(){
+            usuarioActivo = null;
         }
 
 

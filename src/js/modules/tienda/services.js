@@ -24,6 +24,7 @@
             getProductos: getProductos,
             getSiguienteConsecutivo: getSiguienteConsecutivo,
             updateSession: updateSession,
+            clearTiendaActiva: clearTiendaActiva
         };
         return service;
           
@@ -137,6 +138,10 @@
                     sessionService.setVariable("showSideBar", true);
                 }
             }
+        }
+
+        function clearTiendaActiva(){
+            tiendaActiva = null;
         }
 
     }

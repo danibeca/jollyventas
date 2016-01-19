@@ -16,7 +16,7 @@
         sessionService.setVariable("vistaPie", "");
         
         function seleccionar(tienda) {
-            $rootScope.tiendaNombre = tienda.nombre;
+            sessionService.setVariable("tiendaNombre", tienda.nombre);
             tiendaService.setTiendaActiva(tienda);
             locationService.updateCurrentLocation('/tienda-abrir');            
         }
