@@ -6,12 +6,12 @@
         .factory('usuarioService', usuarioService);
 
     /* @ngInject */
-    function usuarioService($http, sessionService, storageService , mockService) {        
+    function usuarioService($http, sessionService, storageService , mockService) {
         var usuarioActivo;
 
         var service = {
             getLogin: getLogin,
-            setUsuarioActivo: setUsuarioActivo,              
+            setUsuarioActivo: setUsuarioActivo,
             getUsuarioActivo: getUsuarioActivo,
             updateSession: updateSession,
             clearUsuarioActivo: clearUsuarioActivo

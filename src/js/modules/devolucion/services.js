@@ -2,12 +2,12 @@
     'use strict';
     
     angular
-        .module('app.venta')
-        .factory('ventaService', ventaService);
+        .module('app.devolucion')
+        .factory('devolucionService', devolucionService);
     
     /* @ngInject */
     
-    function ventaService($http, sessionService, storageService , mockService, productoService) {
+    function devolucionService($http, sessionService, storageService , mockService, productoService) {
         
         var service = {
             iniciarVista: iniciarVista,

@@ -10,7 +10,8 @@ angular.module('jollyVentasApp', [
   'app.caja',
   'app.almacen',
   'app.venta',
-  'app.devolucion'
+  'app.devolucion',
+  'app.producto'
   //'compraModule',
   //'ventaModule',  
 ])

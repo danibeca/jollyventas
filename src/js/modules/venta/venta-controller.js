@@ -6,12 +6,11 @@
         .controller('Venta', Venta);
 
     /* @ngInject */
-    function Venta($rootScope, sessionService, locationService, almacenService, usuarioService, tiendaService) {
+    function Venta($rootScope, sessionService, locationService, almacenService, usuarioService, ventaService, tiendaService) {
 
         var vm = this;
         vm.productos = tiendaService.getProductos();
-        iniciarProductos();
-
+        vm.sabores = ventaService.iniciarVista(vm.productos);
         vm.articuloAgregar = articuloAgregar;
         vm.articuloRemover = articuloRemover;
 
@@ -23,68 +22,6 @@
 
 
         ////////////////////////////////////////////////////////////////////////////////
-
-        function iniciarProductos(){
-            vm.productos_disponibles = [];
-            vm.sabores = [  {   "nombre" :  "cherry",
-                                "prod" :    {   "nueve" : {"id": 101, "cantidad": 0, "disponible": false}, 
-                                                "doce" : {"id": 102, "cantidad": 0, "disponible": false}
-                                            },
-                                "disponible" : false
-                            },
-                            {   "nombre" : "apple",
-                                "prod" :    {   "nueve" : {"id": 201, "cantidad": 0, "disponible": false}, 
-                                                "doce" : {"id": 202, "cantidad": 0, "disponible": false}
-                                            },
-                                "disponible" : false
-                            },
-                            {   "nombre" : "hersheys",
-                                "prod" :    {   "nueve" : {"id": 301, "cantidad": 0, "disponible": false}, 
-                                                "doce" : {"id": 302, "cantidad": 0, "disponible": false}
-                                            },
-                                "disponible" : false
-                            },
-                            {   "nombre" : "watermelon",
-                                "prod" :    {   "nueve" : {"id": 401, "cantidad": 0, "disponible": false}, 
-                                                "doce" : {"id": 402, "cantidad": 0, "disponible": false}
-                                            },
-                                "disponible" : false
-                            },
-                            {   "nombre" : "blue",
-                                "prod" :    {   "nueve" : {"id": 501, "cantidad": 0, "disponible": false}, 
-                                                "doce" : {"id": 502, "cantidad": 0, "disponible": false}
-                                            },
-                                "disponible" : false
-                            },
-                            {   "nombre" : "grape",
-                                "prod" :    {   "nueve" : {"id": 601, "cantidad": 0, "disponible": false}, 
-                                                "doce" : {"id": 602, "cantidad": 0, "disponible": false}
-                                            },
-                                "disponible" : false
-                            }
-                        ];
-            vm.sabores_disponibles = [];
-
-            angular.forEach(vm.sabores, function(sabor, i) {
-                
-                angular.forEach(vm.productos, function(producto, i) {
-
-                    if(sabor.prod.nueve.id === producto.id){
-                        sabor.prod.nueve.disponible = true;
-                    }
-
-                    if(sabor.prod.doce.id === producto.id){
-                        sabor.prod.doce.disponible = true;
-                    }
-                }); 
-
-                if(sabor.prod.nueve.disponible === true || sabor.prod.doce.disponible === true){
-                    vm.sabores_disponibles.push(sabor);
-                }
-            });
-
-            vm.sabores = vm.sabores_disponibles;
-        }
 
         function articuloAgregar(posicion, tamano){
             var nueva_cantidad = vm.sabores[posicion].prod[tamano].cantidad + 1;

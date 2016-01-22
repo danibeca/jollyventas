@@ -6,7 +6,7 @@
         .factory('almacenService', almacenService);
 
     /* @ngInject */
-    function almacenService($http, storageService, mockService) {        
+    function almacenService($http, storageService, mockService) {
         
         var almacenActual;
         

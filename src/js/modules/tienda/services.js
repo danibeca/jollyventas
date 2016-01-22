@@ -45,7 +45,7 @@
             }
         }
 
-        function abrirTienda(user, tienda, caja, articulos) {        
+        function abrirTienda(user, tienda, caja, articulos) {
             return mockService.abrirTienda()             
             //return $http.get('server/tienda/abrir/', getRequestJson)
                 .then(abrirTiendaComplete)
